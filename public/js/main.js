@@ -1,3 +1,21 @@
+// 
+// 
+var idleMax = 30;
+  var idleTime = 0;
+
+  var idleInterval = setInterval("timerIncrement()", 60000);  
+  $( "body" ).mousemove(function( event ) {
+      idleTime = 0;
+});
+function timerIncrement() {
+    idleTime = idleTime + 1;
+    if (idleTime > idleMax) { 
+        window.location="login.blade.php";
+    }
+} 
+   // 
+   // 
+   // 
 $(document).ready(function(){
 	let widthDevice = $(document).outerWidth();
 	let footer = document.getElementById('footer');

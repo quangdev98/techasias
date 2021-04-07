@@ -7,7 +7,7 @@ use App\Http\Requests\PostRequest;
 use App\Services\PostServices;
 use Illuminate\Http\Request;
 
-class postController extends Controller
+class PostController extends Controller
 {
 	private $postServices;
 
@@ -16,28 +16,30 @@ class postController extends Controller
 		$this->postServices = $postServices;
 	}
     public function index(){
-    	$post = $this->postServices->list();
+    	$post = $this->postServices->index();
     	return view('AdminStore.pages.posts.post_list', compact('post'));
     }
     public function create(){
-        $postCreate = $this->postServices->add();
+        $postCreate = $this->postServices->create();
         return view('AdminStore.pages.posts.post_add', compact('postCreate'));
     }
-    public function postCreate(PostRequest $request)
+    public function store(PostRequest $request)
     {
-    	$postAdd = $this->postServices->create($request);
+        $data = $request->all();
+    	$postAdd = $this->postServices->store($request, $data);
     	return redirect()->route('ad.post')->with('success','Thêm bài viết thành công!');
     }
-    public function update($id)
+    public function edit($id)
     {
-        $update = $this->postServices->update($id);
-        $dataUpdate = $this->postServices->add();
+        $update = $this->postServices->edit($id);
+        $dataUpdate = $this->postServices->create($id);
         return view('AdminStore.pages.posts.post_edit', compact('update','dataUpdate'));
     }
 
-    public function postUpdate(PostRequest $request, $id)
+    public function update(PostRequest $request, $id)
     {
-        $postUpdate = $this->postServices->postUpdate($request, $id);
+        $data = $request->all();
+        $postUpdate = $this->postServices->update($data, $id);
         return redirect()->route('ad.post')->with('success','Sửa bài viết thành công');
     }
     public function destroy($id)

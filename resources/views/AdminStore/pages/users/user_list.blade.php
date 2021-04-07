@@ -32,15 +32,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ( $user as $u ){ ?>
+                    @foreach( $user as $u )
                     <tr class="" align="center">
-                        <td><?= $u->id ?></td>
-                        <td><?= $u->name ?></td>
-                        <td><?= $u->countPost ?></td>
+                        <td>{{ $u->id }}</td>
+                        <td>{{ $u->name }}</td>
+                        <td>{{ $u->countPost }}</td>
                         <td class="center"><a href="{{ route('ad.destroy-user',['id'=> $u->id]) }}"><i class="fad fa-trash-alt"></i></a></td>
-                        <td class="center"><a href="{{ route('ad.update-user',['id'=> $u->id]) }}"><i class="fad fa-pencil"></i></a></td>
+                        <td class="center"><a href="{{ route('ad.edit-user',['id'=> $u->id]) }}"><i class="fad fa-pencil"></i></a></td>
                     </tr>
-                    <?php } ?>
+                    @endforeach
                 </tbody>
             </table>
         </div>

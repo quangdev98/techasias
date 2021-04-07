@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 // use App\Models\CategoryModel;
 
-class categoryController extends Controller
+class CategoryController extends Controller
 {
 
 	private $categoryServices;
@@ -22,30 +22,34 @@ class categoryController extends Controller
 
     public function index()
     {
-    	$category = $this->categoryServices->list();
+    	$category = $this->categoryServices->index();
     	return view('AdminStore.pages.categorys.cate_list', compact('category'));
     }
 
-    public function create(CategoryRequest $request)
+    public function store(CategoryRequest $request)
     {
-    	$cateAdd = $this->categoryServices->add($request);
-    	return redirect()->route('ad.category')->with('success','Thêm thể loại thành công!');
+        $data = $request->all();
+    	$cateAdd = $this->categoryServices->store($data);
+        if($cateAdd){
+    	   return redirect()->route('ad.category')->with('success','Thêm thể loại thành công!');
+        }
     }
 
-    public function getUpdate($id)
+    public function edit($id)
     {
-    	$getUpdate = $this->categoryServices->update($id);
+    	$getUpdate = $this->categoryServices->edit($id);
     	return view('AdminStore.pages.categorys.cate_edit',compact('getUpdate'));
     }
 
     public function update(CategoryRequest $request, $id){
-    	$updateCate = $this->categoryServices->updatePost($request,$id);
+        $data = $request->all();
+    	$updateCate = $this->categoryServices->update($data, $id);
     	return redirect()->route('ad.category')->with('success','Sửa thể loại thành công!');
     }
 
     public function destroy($id)
     {
-    	$deleteCate = $this->categoryServices->delete($id);
+    	$deleteCate = $this->categoryServices->destroy($id);
     	return redirect()->route('ad.category')->with('success','Xóa thể loại thành công!');
 
     }

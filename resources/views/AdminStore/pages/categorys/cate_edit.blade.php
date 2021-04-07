@@ -10,7 +10,7 @@
         </div>
         <!-- /.col-lg-12 -->
         <div class="col-lg-7" style="padding-bottom:120px">
-            <form name="post" action="{{ route('ad.post-update-category',['id'=>$getUpdate->id]) }}" method="POST" id="editCategory">
+            <form name="post" action="{{ route('ad.update-category',['id'=>$getUpdate->id]) }}" method="POST" id="editCategory">
                 @csrf
                 <div class="form-group">
                     <label>Tên danh mục</label>

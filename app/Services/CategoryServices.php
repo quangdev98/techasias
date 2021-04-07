@@ -9,38 +9,37 @@ use App\Http\Requests\CategoryRequest;
  class CategoryServices{
  	
 
- 	public function list(){
+ 	public function index(){
 
- 		
  		$listCate = DB::table('category')
 		->leftjoin('post','category.id','=', 'post.cate_id')
-		->select('category.*', DB::raw('count(post.cate_id) as numberCate'))
+		->select('category.*', DB::raw('count(post.cate_id) as number_cate'))
 		->groupBy('category.id','category.name','category.created_at','category.updated_at')
 		->paginate(15);
 		return $listCate;
  	}
 
- 	public function add(CategoryRequest $request){
- 		$name = $request->input('name');
-      	DB::table('category')->insert([
-      		'name'=> $name
-      	]);
+ 	public function store($data){
+ 		$dataInsert = [
+ 			'name' => $data['name'],
+ 		];
+      	return DB::table('category')->insert($dataInsert);
 	}
 
-	public function update($id){
+	public function edit($id){
 		$getCateUpdate = DB::table('category')
 		->where('id','=',$id)->first();  
 		return $getCateUpdate;
 	}
 
-	public function updatePost(CategoryRequest $request, $id){
-		DB::table('category')
-		->where('id','=',$id)
-		->update(['name' => $request->name]);
-
+	public function update($data, $id){
+		$dataUpdate = [
+			'name' => $data['name']
+		];
+		return DB::table('category')->where('id','=',$id)->update($dataUpdate);
 	}
 
-	public function delete($id){
+	public function destroy($id){
 		DB::table('category')->where('id','=',$id)->delete();
 	}
  }

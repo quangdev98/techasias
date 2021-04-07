@@ -13,7 +13,7 @@ class UserModel extends Authenticatable
 
 	protected $guard = 'admin';
     protected $table = 'users';
-    protected $fillable = ['name','image','phone','email','password'];
+    protected $fillable = ['name','image','phone','email'];
     protected $hidden = ['password', 'remember_token',];
 
 }

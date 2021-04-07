@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->tinyInteger('gender')->nullable()->comment('Giới tính');
             $table->dateTime('birthday')->default('1912-01-01')->nullable()->comment('Ngày sinh');
             $table->string('info',1000)->nullable()->comment('Thông tin thêm');
-            $table->string('password')->comment('Mật khẩu đăng nhập');
+            $table->string('password')->default(12345678)->comment('Mật khẩu đăng nhập');
             $table->tinyInteger('level')->default(2)->comment('Cấp độ phân quyền: 1: Tài khoản hệ thống - 2: Tài khoản viết bài - 3: Tài khoản quản lý bài viết - 4: Tài khoản biên tập sản phẩm/dự án - 5: Tài khoản quản lý sản phẩm/dự án ');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP'));

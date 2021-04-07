@@ -1,7 +1,7 @@
 @extends('AdminStore.layouts.master')
 @section('title', ' Thêm tác giả')
 @section('content')
-<form name="post" enctype="multipart/form-data" action="{{ route('ad.create-user-post')}}" method="POST" id="addUser">
+<form name="post" enctype="multipart/form-data" action="{{ route('ad.store-user')}}" method="POST" id="addUser">
     @csrf
     <div class="container-fluid">
         <div class="row">

@@ -23,31 +23,31 @@ Route::get('/', function () {
 	
 // });
 //category
-Route::group(['prefix'=>'category'], function(){
-	Route::get('/','categoryController@index')->name('category');
-	Route::post('post-create','categoryController@create')->name('add-category');
-	Route::get('update/{id}','categoryController@getUpdate')->name('get-category');
-	Route::post('update/{id}','categoryController@update')->name('post-update-category');
-	Route::get('destroy/{id}','categoryController@destroy')->name('delete-category');
+Route::group(['prefix'=>'categorys'], function(){
+	Route::get('/','CategoryController@index')->name('category');
+	Route::post('post-create','CategoryController@store')->name('store-category');
+	Route::get('update/{id}','CategoryController@edit')->name('edit-category');
+	Route::post('update/{id}','CategoryController@update')->name('update-category');
+	Route::get('destroy/{id}','CategoryController@destroy')->name('destroy-category');
 });
 //post
-Route::group(['prefix'=>'post'], function(){
-	Route::get('/','postController@index')->name('post');
-	Route::get('create','postController@create')->name('create-posts');
-	Route::post('create','postController@postCreate')->name('post-create-posts');
-	Route::get('update/{id}','postController@update')->name('update-post');
-	Route::post('update/{id}','postController@postUpdate')->name('post-update-post');
-	Route::get('destroy/{id}','postController@destroy')->name('delete-post');
+Route::group(['prefix'=>'posts'], function(){
+	Route::get('/','PostController@index')->name('post');
+	Route::get('create','PostController@create')->name('create-post');
+	Route::post('create','PostController@store')->name('store-post');
+	Route::get('update/{id}','PostController@edit')->name('edit-post');
+	Route::post('update/{id}','PostController@update')->name('update-post');
+	Route::get('destroy/{id}','PostController@destroy')->name('destroy-post');
 
 });
-Route::group(['prefix'=>'user'], function(){
-	Route::get('/','userController@index')->name('user');
-	Route::get('create-user','userController@create')->name('create-user');
-	Route::post('create-user','userController@createUser')->name('create-user-post');
-	Route::get('update-user/{id}','userController@update')->name('update-user');
-	Route::post('update-user/{id}','userController@updateUser')->name('update-user-post');
-	Route::get('destroy-user/{id}','userController@destroy')->name('destroy-user');
-	Route::post('destroy-user/{id}','userController@destroyUser')->name('destroy-user-post');
+Route::group(['prefix'=>'users'], function(){
+	Route::get('/','UserController@index')->name('user');
+	Route::get('create-user','UserController@create')->name('create-user');
+	Route::post('create-user','UserController@store')->name('store-user');
+	Route::get('update-user/{id}','UserController@edit')->name('edit-user');
+	Route::post('update-user/{id}','UserController@update')->name('update-user');
+	Route::get('destroy-user/{id}','UserController@destroy')->name('destroy-user');
+	// Route::post('destroy-user/{id}','UserController@destroyUser')->name('destroy-user-post');
 	
 	
 });

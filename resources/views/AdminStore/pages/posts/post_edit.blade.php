@@ -1,7 +1,10 @@
 @extends('AdminStore.layouts.master')
 @section('title','Update')
+@section('style-libraries')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css">
+@stop
 @section('content')
-   <form name="post" action="{{ route('ad.post-update-post',['id'=> $update->id]) }}" method="POST" enctype="multipart/form-data" id="editPost">
+   <form name="post" action="{{ route('ad.update-post',['id'=> $update->id]) }}" method="POST" enctype="multipart/form-data" id="editPost">
         @csrf
         <div class="container-fluid">
             <div class="row">
@@ -36,22 +39,22 @@
                         </div>
                         <div class="form-group">
                             <label>Thẻ</label>
-                            <input class="form-control" required="" name="tag" placeholder="Thẻ tag" value="{{ $update->tag }}" />
+                            <input class="form-control" required="" name="tag" value="{{ $update->tag }}" data-role="tagsinput" />
                         </div> 
                         <div class="form-group">
                             <label>Tác giả</label>
                             <select class="form-control" name="user_id">
-                                <?php foreach ($dataUpdate['user_id'] as $ui): ?>
-                                    <option value="{{ $ui->id}}">{{ $ui->name}}</option>
-                                <?php endforeach ?>
+                                @foreach($dataUpdate['user_id'] as $ui)
+                                    <option value="{{ $ui->id}}" {{ $ui->id == $update->user_id ? 'selected' : '' }} >{{ $ui->name}}</option>
+                                @endforeach
                             </select>
                         </div> 
                         <div class="form-group">
                             <label>Danh mục</label>
                             <select class="form-control" name="cate_id">
-                                <?php foreach ($dataUpdate['cate_id'] as $ci): ?>
-                                    <option value="{{ $ci->id}}">{{ $ci->name}}</option>
-                                <?php endforeach ?>
+                                @foreach($dataUpdate['cate_id'] as $ci)
+                                    <option value="{{ $ci->id}}" {{ $ci->id == $update->cate_id ? 'selected' : '' }}>{{ $ci->name}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
@@ -73,5 +76,6 @@
 @section('scripts')
     <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
     {!! JsValidator::formRequest('App\Http\Requests\PostRequest', '#editPost'); !!}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
 @stop
        

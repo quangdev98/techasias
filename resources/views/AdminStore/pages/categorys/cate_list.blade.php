@@ -26,22 +26,21 @@
                     <tr align="center">
                         <th>ID</th>
                         <th>Name</th>
-                        <th>Bài viết</th><!-- 
-                        <th>Status</th> -->
+                        <th>Bài viết</th>
                         <th>Delete</th>
                         <th>Edit</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($category as $cate): ?>
+                    @foreach($category as $cate)
                         <tr align="center">
-                            <td><?= $cate->id ?></td>
-                            <td><?= $cate->name ?></td>
-                            <td><?= $cate->numberCate ?></td>
-                            <td class="center"><a href="{{ route('ad.delete-category',['id'=> $cate->id ]) }}"><i class="fad fa-trash-alt"></i></a></td>
-                            <td class="center"><a href="{{ route('ad.get-category',['id'=>$cate->id])}}"><i class="fad fa-pencil"></i></a></td>
+                            <td>{{ $cate->id }}</td>
+                            <td>{{ $cate->name }}</td>
+                            <td>{{ $cate->number_cate }}</td>
+                            <td class="center"><a href="{{ route('ad.destroy-category',['id'=> $cate->id ]) }}"><i class="fad fa-trash-alt"></i></a></td>
+                            <td class="center"><a href="{{ route('ad.edit-category',['id'=>$cate->id])}}"><i class="fad fa-pencil"></i></a></td>
                         </tr>
-                    <?php endforeach ?>
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -55,7 +54,7 @@
                       <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form name="post" action="{{ route('ad.add-category') }}" method="POST" id="addCategory">
+                <form name="post" action="{{ route('ad.store-category') }}" method="POST" id="addCategory">
                     @csrf
                     <div class="modal-body">
                     <div class="row">

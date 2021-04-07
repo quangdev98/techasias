@@ -17,7 +17,7 @@
             <h1 class="page-header">Danh sách bài viết
                 <small></small>
             </h1>
-            <p class="addQuery"><a href="{{ route('ad.post-create-posts') }}" >Thêm bài viết</a></p>
+            <p class="addQuery"><a href="{{ route('ad.create-post') }}" >Thêm bài viết</a></p>
         </div>
         <!-- /.col-lg-12 -->
         <div class="wrapTable">
@@ -35,22 +35,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ( $post as $p ){ ?>
+                    @foreach( $post as $p )
                     <tr class="" align="center">
-                        <td><?= $p->id ?></td>
-                        <td><div class="textContent"><?= $p->title ?></div></td>
-                        <td><?= $p->title ?></td>
-                        <td><?= $p->categoryName ?></td>
-                        <td><?= $p->author ?></td>
+                        <td>{{ $p->id }}</td>
+                        <td><div class="textContent">{{ $p->title }}</div></td>
+                        <td>{{ $p->title }}</td>
+                        <td>{{ $p->categoryName }}</td>
+                        <td>{{ $p->author }}</td>
                         <td>
-                            <?= $p->status == 1 ? 'Bản nháp' : ''?>
-                            <?= $p->status == 2 ? 'Chờ duyệt' : ''?>
-                            <?= $p->status == 3 ? 'Đã xuất bản' : ''?>
+                            {{ $p->status == 1 ? 'Bản nháp' : ''}}
+                            {{ $p->status == 2 ? 'Chờ duyệt' : ''}}
+                            {{ $p->status == 3 ? 'Đã xuất bản' : ''}}
                         </td>
-                        <td class="center"><a href="{{ route('ad.delete-post',['id'=>$p->id]) }}"><i class="fad fa-trash-alt"></i></a></td>
-                        <td class="center"><a href="{{ route('ad.update-post',['id'=> $p->id]) }}"><i class="fad fa-pencil"></i></a></td>
+                        <td class="center"><a href="{{ route('ad.destroy-post',['id'=>$p->id]) }}"><i class="fad fa-trash-alt"></i></a></td>
+                        <td class="center"><a href="{{ route('ad.edit-post',['id'=> $p->id]) }}"><i class="fad fa-pencil"></i></a></td>
                     </tr>
-                    <?php } ?>
+                    @endforeach
                 </tbody>
             </table>
         </div>

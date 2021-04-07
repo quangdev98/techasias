@@ -45,7 +45,7 @@ use Illuminate\Support\Facades\Route;
             }
     }
 
-    if (! function_exists('routeAction')) 
+    if (! function_exists('checkAdmin')) 
     {
         function checkAdmin()
         {

@@ -1,7 +1,7 @@
 @extends('AdminStore.layouts.master')
 @section('title', ' Sửa tác giả')
 @section('content')
-<form name="post" enctype="multipart/form-data" action="{{ route('ad.update-user-post',['id'=>$update->id])}}" method="POST" id="editUser">
+<form name="post" enctype="multipart/form-data" action="{{ route('ad.update-user',['id'=>$update->id])}}" method="POST" id="editUser">
     @csrf
     <div class="container-fluid">
         <div class="row">
@@ -26,10 +26,6 @@
                 </div>
             </div>
             <div class="col-lg-5">
-                <div class="form-group">
-                    <label>Password</label>
-                    <input class="form-control" type="password" name="password" value="{{ $update->password }}" placeholder="Password" />
-                </div>
                 <div class="form-group">
                     <label>Level</label>
                     <select class="form-control" name="level">

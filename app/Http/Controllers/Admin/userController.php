@@ -18,7 +18,7 @@ class userController extends Controller
 
     public function index()
     {
-    	$user = $this->userServices->list();
+    	$user = $this->userServices->index();
     	return view('AdminStore.pages.users.user_list',compact('user'));
     }
     
@@ -27,21 +27,23 @@ class userController extends Controller
     	return view('AdminStore.pages.users.user_add');
     }
 
-    public function createUser(UserRequest $request)
+    public function store(UserRequest $request)
     {
-    	$createAuthor = $this->userServices->create($request);
+        $data = $request->all();
+    	$createAuthor = $this->userServices->store($data);
     	return redirect()->route('ad.user')->with('success','Thêm người dùng thành công!');
     }
 
-    public function update($id)
+    public function edit($id)
     {
-        $update = $this->userServices->update($id);
+        $update = $this->userServices->edit($id);
         return view('AdminStore.pages.users.user_edit',compact('update'));
     }
 
-    public function updateUser(UserRequest $request, $id)
+    public function update(UserRequest $request, $id)
     {
-        $update = $this->userServices->updatePost($request, $id);
+        $data = $request->all();
+        $update = $this->userServices->update($data, $id);
         return redirect()->route('ad.user')->with('success','Sửa người dùng thành công!');
     }
     

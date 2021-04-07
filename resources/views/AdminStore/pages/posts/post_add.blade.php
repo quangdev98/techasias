@@ -1,7 +1,10 @@
 @extends('AdminStore.layouts.master')
 @section('title','Thêm bài viết')
+@section('style-libraries')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css">
+@stop
 @section('content')
-    <form name="post" action="{{ route('ad.post-create-posts') }}" method="POST" enctype="multipart/form-data" id="addPost">
+    <form name="post" action="{{ route('ad.store-post') }}" method="POST" enctype="multipart/form-data" id="addPost">
         @csrf
         <div class="container-fluid">
             <div class="row">
@@ -36,22 +39,23 @@
                         </div>
                         <div class="form-group">
                             <label>Thẻ</label>
-                            <input class="form-control" required="" name="tag" placeholder="Thẻ tag" />
+                            <input class="form-control" id="tags" required="" value="" name="tag" data-role="tagsinput" />
                         </div> 
                         <div class="form-group">
                             <label>Tác giả</label>
                             <select class="form-control" name="user_id">
-                                <?php foreach ($postCreate['user_id'] as $ui): ?>
+                                @foreach($postCreate['user_id'] as $ui)
                                     <option value="{{ $ui->id}}">{{ $ui->name}}</option>
-                                <?php endforeach ?>
+                                @endforeach
                             </select>
                         </div> 
                         <div class="form-group">
                             <label>Danh mục</label>
                             <select class="form-control" name="cate_id">
-                                <?php foreach ($postCreate['cate_id'] as $ci): ?>
+                                
+                               @foreach($postCreate['cate_id'] as $ci)
                                     <option value="{{ $ci->id}}">{{ $ci->name}}</option>
-                                <?php endforeach ?>
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group">
@@ -70,4 +74,5 @@
 @section('scripts')
     <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
     {!! JsValidator::formRequest('App\Http\Requests\PostRequest', '#addPost'); !!}
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
 @stop     
