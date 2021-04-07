@@ -24,9 +24,9 @@ CREATE TABLE IF NOT EXISTS `category` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `category_id_index` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table admin_ser.category: ~4 rows (approximately)
+-- Dumping data for table admin_ser.category: ~5 rows (approximately)
 DELETE FROM `category`;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
 INSERT INTO `category` (`id`, `name`, `created_at`, `updated_at`) VALUES
@@ -71,7 +71,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 	(7, '2021_03_27_140641_create_category_table', 2),
 	(8, '2021_03_27_140843_create_post_table', 2);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
-
 -- Dumping structure for table admin_ser.users
 CREATE TABLE IF NOT EXISTS `users` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -84,28 +83,28 @@ CREATE TABLE IF NOT EXISTS `users` (
   `gender` tinyint(4) DEFAULT NULL COMMENT 'Giới tính',
   `birthday` datetime DEFAULT '1912-01-01 00:00:00' COMMENT 'Ngày sinh',
   `info` varchar(1000) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Thông tin thêm',
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Mật khẩu đăng nhập',
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '12345678' COMMENT 'Mật khẩu đăng nhập',
   `level` tinyint(4) NOT NULL DEFAULT '2' COMMENT 'Cấp độ phân quyền: 1: Tài khoản hệ thống - 2: Tài khoản viết bài - 3: Tài khoản quản lý bài viết - 4: Tài khoản biên tập sản phẩm/dự án - 5: Tài khoản quản lý sản phẩm/dự án ',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`),
   KEY `users_id_index` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table admin_ser.users: ~4 rows (approximately)
+-- Dumping data for table admin_ser.users: ~3 rows (approximately)
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 INSERT INTO `users` (`id`, `image`, `name`, `slug`, `phone`, `email`, `address`, `gender`, `birthday`, `info`, `password`, `level`, `created_at`, `updated_at`) VALUES
-	(1, 'IMAGE-USER1617613052IMAGE-SLIDE-1596601351cach-trang-diem-cho-mui-to-2.png', 'Quang Merce', 'quang-merce', '0969030421', 'dvq.dev@gmail.com', NULL, 1, '1998-07-26 21:30:30', '22 Year Old', '$2y$10$jbep9dBNU1JudvarqzWpvu5Zxcnwk6.OB4uRJZwvCQ0mwYxW5qtZK', 1, '2021-04-05 07:32:59', '2021-04-05 07:32:59'),
-	(2, 'IMAGE-USER1617611897IMAGE-AUTHOR-1596949117pham-nhat-vuong-giau-tu-dau-giau-nhu-the-nao-bytuong-com.jpg', 'Đào Minh Hoa', 'dao-minh-hoa', '09753445342', 'daominhhoa@gmail.com', NULL, NULL, '1912-01-01 00:00:00', NULL, '$2y$10$Dfjbx/ghus11pTnFl1tkN.QqgqeybyjOK7R.Polk4Ttg7ewseR0GS', 3, '2021-04-05 15:38:17', '2021-04-05 15:38:17'),
-	(3, 'IMAGE-USER1617612038IMAGE-AUTHOR-1596948782100496736-steve-jobs-march-2011-getty.jpg', 'Mai Hải Vương', 'mai-hai-vuong', '099999999', 'haivuong@gmail.com', NULL, NULL, '1912-01-01 00:00:00', NULL, '$2y$10$62cQe/Jra2O9nJ8BGJw2ROwBOHKH871jmkYSOT8E/06p63jLpvkma', 2, '2021-04-05 15:40:38', '2021-04-05 15:40:38'),
-	(4, 'IMAGE-USER1617612803IMAGE-SLIDE-1596948955im-105325.jpg', 'Author1', 'author1', '099888888', 'author1@gmail.com', NULL, NULL, '1912-01-01 00:00:00', NULL, '$2y$10$vcbsY734UfOfCRvBkkNTieYueLcn6TA1oZsuCokk5F1R7WWhEK0nq', 2, '2021-04-05 15:53:24', '2021-04-05 15:53:24');
+	(1, 'IMAGE-USER1617613052IMAGE-SLIDE-1596601351cach-trang-diem-cho-mui-to-2.png', 'Quang Merce', 'quang-merce', '0969030421', 'dvq.dev@gmail.com', NULL, 1, '1998-07-26 21:30:30', '22 Year Old', '$2y$10$T7nSr2bGiUABD.7VzEHWu.WNO6cV2OKn0CBdMBmHVtTU8q8j1N9Be', 1, '2021-04-05 07:32:59', '2021-04-05 07:32:59'),
+	(2, 'IMAGE-user1617772797-client2.png', 'Thu Hương', 'thu-huong', '0975847118', 'thuhuong@gmail.com', NULL, NULL, '1912-01-01 00:00:00', NULL, '$2y$10$QYhEevoIe4XztVt5mYcP6.JYqt9tGsRslEbBoGd.rKPQ2nC.cAOtO', 2, '2021-04-07 12:19:58', '2021-04-07 12:19:58'),
+	(3, 'IMAGE-user1617776286-a2.png', 'demo1', 'demo1', '0969030431', 'weqrerew@gmail.com', NULL, NULL, '1912-01-01 00:00:00', NULL, '$2y$10$hI0eGkTt2ma79zzCD8OHo.FAvXLddVTr5mxCk.S4PE8DEDDbiRx8e', 2, '2021-04-07 13:18:06', '2021-04-07 13:18:06');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+
 -- Dumping structure for table admin_ser.post
 CREATE TABLE IF NOT EXISTS `post` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
@@ -128,13 +127,11 @@ CREATE TABLE IF NOT EXISTS `post` (
   KEY `post_cate_id_index` (`cate_id`),
   CONSTRAINT `post_cate_id_foreign` FOREIGN KEY (`cate_id`) REFERENCES `category` (`id`) ON DELETE CASCADE,
   CONSTRAINT `post_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Dumping data for table admin_ser.post: ~3 rows (approximately)
+-- Dumping data for table admin_ser.post: ~1 rows (approximately)
 DELETE FROM `post`;
 /*!40000 ALTER TABLE `post` DISABLE KEYS */;
 INSERT INTO `post` (`id`, `title`, `contentHot`, `slug`, `image`, `postDate`, `tag`, `content`, `user_id`, `cate_id`, `status`, `created_at`, `updated_at`) VALUES
-  (1, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.', 'Lorem ipsum sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.', 'lorem-ipsum-dolor-sit-amet-consectetuer-adipiscing-elit-aenean-commodo-ligula-eget-dolor', 'IMAGE-POST1617612075IMAGE-SLIDE-1596249258r1m1.jpg', '2020-01-01 00:00:00', 'eee', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.', 1, 1, 2, '2021-04-05 07:33:00', '2021-04-05 07:33:00'),
-  (2, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.', 'Lorem ipsum sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.', 'lorem-ipsum-dolor-sit-amet-consectetuer-adipiscing-elit-aenean-commodo-ligula-eget-dolor', 'IMAGE-POST1617612099IMAGE-SLIDE-1596794889yamaha-r1m-do-nhay-ben-voi-phong-cach-monster-gp-2019-7121-1560845028-5d089ae45dcfb.jpg', '2020-01-01 00:00:00', 'eee', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.', 1, 1, 2, '2021-04-05 07:33:00', '2021-04-05 07:33:00'),
-  (3, 'Bài viết mới 1', 'Nội dung bài viết mới 1', 'bai-viet-moi-1', 'IMAGE-SLIDE-1596794889yamaha-r1m-do-nhay-ben-voi-phong-cach-monster-gp-2019-7121-1560845028-5d089ae45dcfb.jpg', '2021-04-05 15:48:59', 'bai ,viet,mới', 'Nội dung bài viết mới 1', 2, 1, 2, '2021-04-05 15:48:59', '2021-04-05 15:48:59');
+  (1, 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.', 'Lorem ipsum sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.', 'lorem-ipsum-dolor-sit-amet-consectetuer-adipiscing-elit-aenean-commodo-ligula-eget-dolor', 'IMAGE-posts1617772143-client1.png', '2020-01-01 00:00:00', 'eee', 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.', 1, 1, 2, '2021-04-05 07:33:00', '2021-04-05 07:33:00');
 /*!40000 ALTER TABLE `post` ENABLE KEYS */;
