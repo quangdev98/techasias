@@ -1,11 +1,11 @@
-<?php  
+<?php
  namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Factory;
 
 /**
-  * 
+  *
   */
  class UserRequest extends FormRequest
  {
@@ -33,7 +33,7 @@ use Illuminate\Validation\Factory;
             'phone' =>'required|min:10|max:11|unique:users,phone,'.request()->route('id'),
             'image' =>'mimes:jpeg,jpg,png,gif|max:10000',
             'password' => 'min:8',
-            
+
         ];
     }
 
@@ -47,7 +47,7 @@ use Illuminate\Validation\Factory;
             'phone.unique'=>'Phone đã tồn tại'
         ];
     }
- } 
+ }
 
 
 

@@ -1,34 +1,27 @@
-<?php  
+<?php
 namespace App\Services;
 
-use Illuminate\Http\Request;
-use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\DB;
-use App\Models\UserModel; 
-use App\Models\PostModel; 
-use App\Functions\AllFunction;
 use App\Services\ImageService;
- 
+use App\Repositories\Users\UserRepositoryInterface;
+
  class UserServices
 {
- 	
-    function __construct(ImageService $imageService)
+
+    function __construct(ImageService $imageService, UserRepositoryInterface $userRepository)
     {
         $this->imageService = $imageService;
+        $this->userRepository = $userRepository;
     }
 
  	public function index()
  	{
- 		$user = DB::table('users')
-        ->leftjoin('post','users.id','=', 'post.user_id')
-        ->select('users.id','users.image','users.name','users.phone','users.email', DB::raw('count(post.user_id) as countPost'))
-        ->groupBy('users.id','users.image','users.name','users.phone','users.email')
-        ->paginate(15);
-        return $user;
+        return $this->userRepository->getList();
  	}
 
  	public function store($data)
- 	{	
+ 	{
+
         $image = $this->imageService->handleStoreImage(request()->file('image'),'user');
         $dataStore = [
             'image'=> $image,
@@ -39,7 +32,7 @@ use App\Services\ImageService;
             'level'=> $data['level'],
             'slug'=> create_slug($data['name']),
         ];
- 		$createUser = DB::table('users')->insert($dataStore);
+ 		return $this->userRepository->store($dataStore);
  	}
 
  	public function edit($id)

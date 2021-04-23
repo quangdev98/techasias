@@ -1,11 +1,11 @@
-<?php  
+<?php
  namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Factory;
 
 /**
-  * 
+  *
   */
  class CategoryRequest extends FormRequest
  {
@@ -28,7 +28,7 @@ use Illuminate\Validation\Factory;
     {
         return [
         	'name' => 'required|min:4|unique:category,name,'.request()->route('id'),
-            
+
         ];
     }
 
@@ -38,7 +38,7 @@ use Illuminate\Validation\Factory;
             'name.unique'=>'Danh mục đã tồn tại!',
         ];
     }
- } 
+ }
 
 
 

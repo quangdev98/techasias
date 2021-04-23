@@ -2,10 +2,10 @@
 
 use Illuminate\Support\Str;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-    if (! function_exists('create_slug')) 
+    if (! function_exists('create_slug'))
     {
         function create_slug($string){
             $slug = Str::slug($string,'-');
@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
         }
     }
 
-    if (! function_exists('date_time_now_type_1')) 
+    if (! function_exists('date_time_now_type_1'))
     {
         function date_time_now_type_1(){
             return Carbon::now()->format('Y-m-d');
@@ -28,7 +28,7 @@ use Illuminate\Support\Facades\Route;
             echo '</div>';
         }
     }
-    if (! function_exists('routeAction')) 
+    if (! function_exists('routeAction'))
     {
             function routeAction()
             {
@@ -45,7 +45,7 @@ use Illuminate\Support\Facades\Route;
             }
     }
 
-    if (! function_exists('checkAdmin')) 
+    if (! function_exists('checkAdmin'))
     {
         function checkAdmin()
         {

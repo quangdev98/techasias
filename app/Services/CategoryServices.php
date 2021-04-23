@@ -1,46 +1,44 @@
-<?php  
+<?php
 namespace App\Services;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\CategoryModel;
-use App\Http\Requests\CategoryRequest;
- 
+use App\Repositories\Category\CategoryRepositoryInterface;
+
  class CategoryServices{
- 	
+
+     private $categoryRepository;
+
+     public function __construct(CategoryRepositoryInterface $categoryRepository)
+     {
+         $this->categoryRepository = $categoryRepository;
+     }
 
  	public function index(){
-
- 		$listCate = DB::table('category')
-		->leftjoin('post','category.id','=', 'post.cate_id')
-		->select('category.*', DB::raw('count(post.cate_id) as number_cate'))
-		->groupBy('category.id','category.name','category.created_at','category.updated_at')
-		->paginate(15);
-		return $listCate;
+ 		return  $this->categoryRepository-> getList();
  	}
 
  	public function store($data){
  		$dataInsert = [
  			'name' => $data['name'],
  		];
-      	return DB::table('category')->insert($dataInsert);
+         dd($dataInsert);
+      	return $this->categoryRepository->store($dataInsert);
 	}
 
-	public function edit($id){
-		$getCateUpdate = DB::table('category')
-		->where('id','=',$id)->first();  
-		return $getCateUpdate;
+	public function show($id)
+    {
+        return $this->categoryRepository->show($id);
 	}
 
-	public function update($data, $id){
+	public function update($id, $data){
 		$dataUpdate = [
 			'name' => $data['name']
 		];
-		return DB::table('category')->where('id','=',$id)->update($dataUpdate);
+		return $this->categoryRepository->update($id, $dataUpdate);
 	}
 
-	public function destroy($id){
-		DB::table('category')->where('id','=',$id)->delete();
+	public function delete($id){
+		return $this->categoryRepository->delete($id);
 	}
  }
 
