@@ -38,13 +38,13 @@
                     <label>Ảnh</label>
                     <input class="form-control" type="file" name="image" />
                     <div class="mt-5" style="text-align: center;">
-                        <img src="../../../uploads/user/{{ $update->image }}" class="images" alt="" style="width:60%;margin:10px 0">
+                        <img src="{{ $update->image }}" class="images" alt="" style="width:60%;margin:10px 0">
                     </div>
                 </div>
-            </div>  
+            </div>
             <div class="col-lg-12">
                 <button type="submit" name="submit" class="btn btn-success">Thêm mới</button>
-                    
+
             </div>
         </div>
         <!-- /.row -->

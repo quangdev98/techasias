@@ -7,10 +7,12 @@
     {{--CSRF Token--}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>TechAsia - @yield('title')</title>
-    <link rel="stylesheet" href="{{ asset('css/bootstrap4_3_1.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/font-awesome/all.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}">
+    <base href="{{ asset('') }}">
+    <link href="images/q_favicon.png" type="image/x-icon" rel="shortcut icon">
+    <link rel="stylesheet" href="css/bootstrap4_3_1.min.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome/all.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
     @yield('style-libraries')
 </head>
 <body>
@@ -25,9 +27,9 @@
     </main>
     @include('AdminStore.partial.footer')
 </body>
-<script type="text/javascript" src="{{ asset('js/jquery.min.js')}}"></script>
-<script type="text/javascript" src="{{ asset('js/popper.min.js')}}"></script>
-<script type="text/javascript" src="{{ asset('js/bootstrap.min.js')}}"></script>
-<script type="text/javascript" type="text/javascript" src="{{ asset('js/main.js')}}"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/popper.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" type="text/javascript" src="js/main.js"></script>
 @yield('scripts')
 </html>

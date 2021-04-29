@@ -30,8 +30,8 @@ use Illuminate\Validation\Factory;
         return [
         	'name' => 'required|min:4|unique:users,name,'.request()->route('id'),
             'email' =>'required|email|max:255|unique:users,email,'.request()->route('id'),
-            'phone' =>'required|min:10|max:11|unique:users,phone,'.request()->route('id'),
-            'image' =>'mimes:jpeg,jpg,png,gif|max:10000',
+            'phone' =>'nullable|numeric|digits:10|unique:users,phone,'.request()->route('id'),
+            'image' =>'nullable|mimes:jpeg,jpg,png,gif|max:10000',
             'password' => 'min:8',
 
         ];
@@ -43,7 +43,9 @@ use Illuminate\Validation\Factory;
             'name.unique'=>'Tên đã tồn tại',
             'email.required'=>'Bạn chưa nhập Email',
             'email.unique'=>'Email đã tồn tại',
-            'phone.required'=>'Số phone phải là số và ít nhất là 10 số',
+            'phone.required'=>' Bạn chưa nhập số phone',
+            'phone.digits'=>'Số phone phải là 10 số',
+            'phone.numeric'=>'Số phone phải là số',
             'phone.unique'=>'Phone đã tồn tại'
         ];
     }

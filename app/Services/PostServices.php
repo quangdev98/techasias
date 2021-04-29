@@ -1,26 +1,21 @@
-<?php  
+<?php
 namespace App\Services;
 
-use Illuminate\Http\Request;
-use App\Http\Requests\PostRequest;
+use App\Helpers\Helpers;
 use Illuminate\Support\Facades\DB;
-use App\Models\PostModel; 
-use App\Functions\AllFunction;
-use App\Services\ImageService;
+use App\Repositories\Posts\PostRepositoryInterface;
 
 class PostServices
 {
-	function __construct(ImageService $imageService)
+    private $postRepository;
+
+	function __construct(PostRepositoryInterface $postRepository)
  	{
- 		$this->imageService = $imageService;
- 	}
+         $this->postRepository = $postRepository;
+     }
+
 	public function index(){
-		$post = DB::table('post')
-    	->leftjoin('category', 'post.cate_id', '=','category.id')
-		->leftjoin('users', 'post.user_id','=','users.id')
-    	->select('post.id','post.title','post.contentHot','post.status','category.name as categoryName', 'users.name as author')
-		->orderBy('post.id','asc')->get();
-    	return $post;
+		return $this->postRepository->getList();
 	}
 	public function create()
 	{
@@ -29,8 +24,8 @@ class PostServices
 		return ['user_id'=>$getUserId, 'cate_id'=>$getCateId];
 	}
 	public function store($data)
-	{ 
-		$image = $this->imageService->handleStoreImage(request()->file('imagePost'),'posts');
+	{
+		$image = Helpers::handleStoreImage(request()->file('imagePost'),'posts');
  		$dataCreate = [
  			'title' => $data['title'],
  			'contentHot' => $data['contentHot'],
@@ -38,20 +33,19 @@ class PostServices
  			'content' => $data['content'],
  			'user_id' => $data['user_id'],
  			'cate_id' => $data['cate_id'],
- 			'slug' => create_slug($data['title']),
+ 			'slug' => Helpers::slug($data['title']),
  			'image' => $image,
  		];
-      	DB::table('post')->insert($dataCreate);
+      	return $this->postRepository->store($dataCreate);
 	}
 
-	public function edit($id)
+	public function show($id)
 	{
-		$postUpdate = DB::table('post')->where('id','=',$id)->first();
-		return $postUpdate;
+		return $this->postRepository->show($id);
 	}
 	public function update($data, $id)
 	{
-		$image = $this->imageService->handleUploadedImage(request()->file('imagePost'), 'post', 'posts', $id);
+		$image = Helpers::handleUploadedImage(request()->file('imagePost'), 'post', 'posts', $id);
         $dataUpdate = [
 			'title'=> $data['title'],
 			'contentHot'=> $data['contentHot'],
@@ -60,20 +54,20 @@ class PostServices
 			'user_id'=> $data['user_id'],
 			'cate_id'=> $data['cate_id'],
 			'status'=> $data['status'],
-			'slug'=> create_slug($data['title']),
+			'slug'=> Helpers::slug($data['title']),
 			'image'=> $image,
 
 		];
-		DB::table('post')->where('id','=', $id)->update($dataUpdate);
+		return $this->postRepository->update($dataUpdate, $id);
 	}
 
 	public function destroy($id)
 	{
-		$this->imageService->handleDeleteImage('post', 'posts', $id);
+		Helpers::handleDeleteImage('post', 'posts', $id);
 		$delete = DB::table('post')->where('id','=',$id)->delete();
 	}
 }
- 
 
 
-?> 
+
+?>

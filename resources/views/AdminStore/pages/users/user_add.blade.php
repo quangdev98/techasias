@@ -40,12 +40,21 @@
                 </div>
                 <div class="form-group">
                     <label>Ảnh</label>
-                    <input class="form-control" type="file" name="image" />
+                    <div class="form-group drop-file relative">
+                        <div class="active after drop-image">
+                            <div class="b-drop">
+                                Mời chọn file ảnh <span class="select_file">chọn file</span>
+                            </div>
+                        </div>
+                        <div class="fill"></div>
+                        <input class="form-control file-upload" id="file" type="file" name="thumbnail_id_card" >
+                        <div class="preview"></div>
+                    </div>
                 </div>
-            </div>  
+            </div>
             <div class="col-lg-12">
                 <button type="submit" name="submit" class="btn btn-success">Thêm mới</button>
-                    
+
             </div>
         </div>
         <!-- /.row -->
@@ -56,4 +65,3 @@
     <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
     {!! JsValidator::formRequest('App\Http\Requests\UserRequest', '#addUser'); !!}
 @stop
-       

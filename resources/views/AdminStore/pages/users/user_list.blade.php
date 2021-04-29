@@ -25,6 +25,7 @@
                 <thead>
                     <tr align="center">
                         <th>ID</th>
+                        <th>Ảnh</th>
                         <th>Name</th>
                         <th>Bài viết</th>
                         <th>Delete</th>
@@ -35,6 +36,7 @@
                     @foreach( $user as $u )
                     <tr class="" align="center">
                         <td>{{ $u->id }}</td>
+                        <td><img class="image-table" src="{{ $u->image }}" alt=""></td>
                         <td>{{ $u->name }}</td>
                         <td>{{ $u->countPost }}</td>
                         <td class="center"><a href="{{ route('ad.destroy-user',['id'=> $u->id]) }}"><i class="fad fa-trash-alt"></i></a></td>
@@ -48,4 +50,3 @@
     <!-- /.row -->
 </div>
 @stop
-           

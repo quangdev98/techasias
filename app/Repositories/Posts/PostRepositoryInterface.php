@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repositories\Users;
+namespace App\Repositories\Posts;
 
-interface UserRepositoryInterface
+interface PostRepositoryInterface
 {
     public function getList();
 

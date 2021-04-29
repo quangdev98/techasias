@@ -1,21 +1,21 @@
 <?php
 
-namespace App\Repositories\Users;
+ namespace App\Repositories\Posts;
 
-use Illuminate\Support\Facades\DB;
-use App\Repositories\Users\UserRepositoryInterface;
+ use Illuminate\Support\Facades\DB;
+ use App\Repositories\Posts\PostRepositoryInterface;
 
-class UserRepository implements UserRepositoryInterface
-{
-    const TABLE = 'users';
+ class PostRepository implements PostRepositoryInterface
+ {
+    const TABLE = 'post';
 
     public function getList()
     {
-        return DB::table(self::TABLE)
-        ->leftjoin('post','users.id','=', 'post.user_id')
-        ->select('users.id','users.image','users.name','users.phone','users.email', DB::raw('count(post.user_id) as countPost'))
-        ->groupBy('users.id','users.image','users.name','users.phone','users.email')
-        ->paginate(15);
+    return DB::table(self::TABLE)
+    ->leftjoin('category', 'post.cate_id', '=','category.id')
+    ->leftjoin('users', 'post.user_id','=','users.id')
+    ->select('post.id','post.title','post.contentHot','post.status','category.name as categoryName', 'users.name as author')
+    ->orderBy('post.id','asc')->get();
     }
 
     public function store($_data)
@@ -33,17 +33,16 @@ class UserRepository implements UserRepositoryInterface
             return false;
         }
     }
-
     public function show($_id)
     {
-        return DB::table(self::TABLE)->where('id','=', $_id)->first();
+        return DB::table(self::TABLE)->where('id','=',$_id)->first();
     }
 
     public function update($_id, $_data)
     {
         DB::beginTransaction();
         try {
-            if(DB::table(self::TABLE)->where('id', '=', $_id)->update($_data)){
+            if(DB::table('post')->where('id','=', $_id)->update($_data)){
                 DB::commit();
                 return true;
             }
@@ -57,6 +56,6 @@ class UserRepository implements UserRepositoryInterface
 
     public function delete($_id)
     {
-        return DB::table(self::TABLE)->where('id','=', $_id)->delete();
+
     }
-}
+ }

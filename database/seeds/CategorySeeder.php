@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 class CategorySeeder extends Seeder
 {
     /**
@@ -14,6 +15,7 @@ class CategorySeeder extends Seeder
         DB::table('category')->insert([
         	'id'=>1,
         	'name'=>'Đời Sống',
+            'slug'=>'doi-song',
         	'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
 			'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);

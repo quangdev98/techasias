@@ -31,7 +31,7 @@ class PostController extends Controller
     }
     public function edit($id)
     {
-        $update = $this->postServices->edit($id);
+        $update = $this->postServices->show($id);
         $dataUpdate = $this->postServices->create($id);
         return view('AdminStore.pages.posts.post_edit', compact('update','dataUpdate'));
     }

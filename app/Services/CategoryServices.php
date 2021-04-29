@@ -1,7 +1,7 @@
 <?php
 namespace App\Services;
 
-use Illuminate\Support\Facades\DB;
+use App\Helpers\Helpers;
 use App\Repositories\Category\CategoryRepositoryInterface;
 
  class CategoryServices{
@@ -20,8 +20,8 @@ use App\Repositories\Category\CategoryRepositoryInterface;
  	public function store($data){
  		$dataInsert = [
  			'name' => $data['name'],
+            'slug' => Helpers::slug($data['name'])
  		];
-         dd($dataInsert);
       	return $this->categoryRepository->store($dataInsert);
 	}
 
@@ -32,7 +32,8 @@ use App\Repositories\Category\CategoryRepositoryInterface;
 
 	public function update($id, $data){
 		$dataUpdate = [
-			'name' => $data['name']
+			'name' => $data['name'],
+            'slug' => Helpers::slug($data['name'])
 		];
 		return $this->categoryRepository->update($id, $dataUpdate);
 	}

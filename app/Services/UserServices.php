@@ -1,16 +1,16 @@
 <?php
 namespace App\Services;
 
-use Illuminate\Support\Facades\DB;
-use App\Services\ImageService;
+use App\Helpers\Helpers;
+use Illuminate\Support\Str;
 use App\Repositories\Users\UserRepositoryInterface;
 
  class UserServices
 {
+    private $userRepository;
 
-    function __construct(ImageService $imageService, UserRepositoryInterface $userRepository)
+    function __construct(UserRepositoryInterface $userRepository)
     {
-        $this->imageService = $imageService;
         $this->userRepository = $userRepository;
     }
 
@@ -22,7 +22,7 @@ use App\Repositories\Users\UserRepositoryInterface;
  	public function store($data)
  	{
 
-        $image = $this->imageService->handleStoreImage(request()->file('image'),'user');
+        $image = Helpers::handleStoreImage(request()->thumbnail_id_card->getClientOriginalName(),'user');
         $dataStore = [
             'image'=> $image,
             'name'=> $data['name'],
@@ -30,35 +30,34 @@ use App\Repositories\Users\UserRepositoryInterface;
             'email'=> $data['email'],
             'password'=> bcrypt($data['password']),
             'level'=> $data['level'],
-            'slug'=> create_slug($data['name']),
+            'slug'=> Helpers::slug($data['name']),
         ];
  		return $this->userRepository->store($dataStore);
  	}
 
- 	public function edit($id)
+ 	public function show($id)
  	{
- 		$update = DB::table('users')->where('id','=', $id)->first();
- 		return $update;
+ 		return $this->userRepository->show($id);
  	}
 
  	public function update($data, $id)
  	{
-        $image = $this->imageService->handleUploadedImage(request()->file('image'), 'users', 'user', $id);
+        $image = Helpers::handleUploadedImage(request()->file('image'), 'users', 'user', $id);
         $dataUpdate = [
             'image'=> $image,
             'name'=> $data['name'],
             'phone'=> $data['phone'],
             'email'=> $data['email'],
             'level'=> $data['level'],
-            'slug'=> create_slug($data['name'])
+            'slug'=> Helpers::slug($data['name'])
         ];
- 		DB::table('users')->where('id', '=', $id)->update($dataUpdate);
+ 		return $this->userRepository->update($id, $dataUpdate);
  	}
 
  	public function destroy($id)
  	{
-        $this->imageService->handleDeleteImage('users', 'user', $id);
- 		DB::table('users')->where('id','=', $id)->delete();
+        Helpers::handleDeleteImage('users', 'user', $id);
+ 		return $this->userRepository->delete($id);
  	}
 
  }
