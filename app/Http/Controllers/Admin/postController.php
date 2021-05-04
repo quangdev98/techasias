@@ -16,36 +16,59 @@ class PostController extends Controller
 		$this->postServices = $postServices;
 	}
     public function index(){
-    	$post = $this->postServices->index();
-    	return view('AdminStore.pages.posts.post_list', compact('post'));
+        try {
+            $post = $this->postServices->index();
+            return view('AdminStore.pages.posts.post_list', compact('post'));
+        } catch (\Exception $e) {
+            abort('500');
+        }
     }
     public function create(){
-        $postCreate = $this->postServices->create();
-        return view('AdminStore.pages.posts.post_add', compact('postCreate'));
+        try {
+            $postCreate = $this->postServices->create();
+            return view('AdminStore.pages.posts.post_add', compact('postCreate'));
+        } catch (\Exception $e) {
+            abort('500');
+        }
     }
     public function store(PostRequest $request)
     {
-        $data = $request->all();
-    	$postAdd = $this->postServices->store($request, $data);
-    	return redirect()->route('ad.post')->with('success','Thêm bài viết thành công!');
+        try {
+            $data = $request->all();
+            $postAdd = $this->postServices->store($request, $data);
+            return redirect()->route('ad.post')->with('success','Thêm bài viết thành công!');
+        } catch (\Exception $e) {
+            abort('500');
+        }
     }
     public function edit($id)
     {
-        $update = $this->postServices->show($id);
-        $dataUpdate = $this->postServices->create($id);
-        return view('AdminStore.pages.posts.post_edit', compact('update','dataUpdate'));
+        try {
+            $data['update'] = $this->postServices->show($id);
+            $data['dataUpdate'] = $this->postServices->create($id);
+            return view('AdminStore.pages.posts.post_edit', compact(['data']));
+        } catch (\Exception $e) {
+            abort('500');
+        }
     }
 
     public function update(PostRequest $request, $id)
     {
-        $data = $request->all();
-        $postUpdate = $this->postServices->update($data, $id);
-        return redirect()->route('ad.post')->with('success','Sửa bài viết thành công');
+        try {
+            $data = $request->all();
+            $postUpdate = $this->postServices->update($data, $id);
+            return redirect()->route('ad.post')->with('success','Sửa bài viết thành công');
+        } catch (\Exception $e) {
+            abort('500');
+        }
     }
     public function destroy($id)
     {
-        // dd('sdsfgd');
-        $destroy = $this->postServices->destroy($id);
-        return redirect()->route('ad.post')->with('success','Xóa bài viết thành công');
+        try {
+            $destroy = $this->postServices->destroy($id);
+            return redirect()->route('ad.post')->with('success','Xóa bài viết thành công');
+        } catch (\Exception $e) {
+            abort('500');
+        }
     }
 }

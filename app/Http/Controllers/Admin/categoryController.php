@@ -14,7 +14,6 @@ class CategoryController extends Controller
 	function __construct(categoryServices $categoryServices)
  	{
  		$this->categoryServices = $categoryServices;
- 		// dd($categoryServices);
  	}
 
     public function index()
@@ -34,7 +33,6 @@ class CategoryController extends Controller
             if(!$this->categoryServices->store($data)){
                 return redirect()->back()->with('success','Đã có lỗi xảy ra!');
             }
-            // die(1);
             return redirect()->route('ad.category')->with('success','Thêm thể loại thành công!');
         } catch (\Exception $e) {
             abort('500');
@@ -65,8 +63,12 @@ class CategoryController extends Controller
 
     public function destroy($id)
     {
-    	$deleteCate = $this->categoryServices->delete($id);
-    	return redirect()->route('ad.category')->with('success','Xóa thể loại thành công!');
+        try {
+            $deleteCate = $this->categoryServices->delete($id);
+            return redirect()->route('ad.category')->with('success','Xóa thể loại thành công!');
+        } catch (\Exception $e) {
+            abort('500');
+        }
 
     }
 }

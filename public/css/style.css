@@ -252,3 +252,24 @@ form .drop-file .fill.active{display: block}
 form .drop-file .fill{background-color: black; opacity: 36%; height: 100%; width: 100%; position: absolute; top: 0; left: 0; z-index: 9; display: none;}
 form .drop-file .b-drop.active{color: white;}
 form .drop-file .b-drop button{margin: 0 0 0 10px; border: 1px solid #43AFFF; color: #43AFFF; text-decoration: underline; display: inline; }
+
+/* style modal */
+.modal .modal-dialog{margin: 200px auto;}
+.modal .modal-dialog .modal-content{padding: 50px 50px 35px 50px; border-radius: 10px; margin: 0 0 200px 0;}
+.modal .modal-dialog .modal-content .modal-header{border-bottom: none;justify-content: center; font-size: 22px; text-align: center; padding: 0;}
+.modal .modal-dialog .modal-content .modal-body{text-align: center; font-size:16px; color: #666666;}
+.modal .modal-dialog .modal-content .modal-footer{border-top: none; justify-content: space-between;}
+.modal-footer>:not(:last-child){margin-right: 15px;}
+.modal-footer>:not(:first-child){margin-left: 15px;}
+.modal-open{padding-right: 0 !important;}
+.modal .modal-dialog .modal-content .modal-body{text-align: left;}
+.modal .modal-dialog .modal-content input.select-time{border-right: none;}
+.modal .modal-dialog .modal-content .modal-body .input-group-text{background-color: white;}
+.modal .modal-dialog .modal-content .modal-body .datepicker{padding: 0;}
+.modal .modal-dialog .modal-content .modal-body .form-row .form-group{margin-bottom: 0;}
+.modal .modal-dialog .modal-content .modal-body  .group-button{display: flex; justify-content: space-between;  margin-top: 10px}
+.modal .modal-dialog .modal-content .modal-body  .group-button button, .modal .modal-dialog .modal-content .modal-footer  .group-button button{width: 48%;}
+.modal .modal-dialog .modal-content .modal-footer  .group-button{display: flex; justify-content: space-between;  margin-top: 10px; width: 100%;}
+.modal .modal-dialog .modal-content .modal-header, .modal-header section{width: 100%;}
+.modal .modal-dialog .modal-content .modal-header .title-form button{min-width: 150px;}
+.modal .margin-modal{margin: 65px auto 0 auto;}

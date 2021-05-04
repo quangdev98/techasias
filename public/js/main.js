@@ -140,6 +140,13 @@ $(document).ready(function(){
         readURL(this);
       });
 
-//rút gọn văn bản
+    //   delete form
+      $(document).on('click','.destroyForm',function(){
+          const url = $(this).data('url');
+          console.log(url);
+          $('#deleteForm').attr('action', url);
+      });
+
+    //rút gọn văn bản
 
  })

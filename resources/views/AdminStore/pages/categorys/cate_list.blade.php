@@ -37,7 +37,7 @@
                             <td>{{ $cate->id }}</td>
                             <td>{{ $cate->name }}</td>
                             <td>{{ $cate->number_cate }}</td>
-                            <td class="center"><a href="{{ route('ad.destroy-category',['id'=> $cate->id ]) }}"><i class="fad fa-trash-alt"></i></a></td>
+                            <td class="center"><a href="#" data-toggle="modal" data-url="{{ route('ad.destroy-category',['id'=> $cate->id ]) }}" data-target="#delete-modal" class="destroyForm"><i class="fad fa-trash-alt"></i></a></td>
                             <td class="center"><a href="{{ route('ad.edit-category',['id'=>$cate->id])}}"><i class="fad fa-pencil"></i></a></td>
                         </tr>
                     @endforeach
@@ -75,8 +75,28 @@
     </div>
     <!-- /.row -->
 </div>
-@stop   
+<div class="modal modal-danger fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="Delete" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="" method="post" id="deleteForm">
+                @csrf
+                <div class="modal-header">
+
+                </div>
+                <div class="modal-body">
+                    <p class="text-center font-bold mb-4">Bạn có muốn xoá nó không？</p>
+                    <p class="text-center" id="timeDelete"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn big bg-gray" data-dismiss="modal">Trở lại</button>
+                    <button type="submit" class="btn big bg-blue">Xoá bỏ</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@stop
 @section('scripts')
     <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
     {!! JsValidator::formRequest('App\Http\Requests\CategoryRequest', '#addCategory'); !!}
-@stop      
+@stop
