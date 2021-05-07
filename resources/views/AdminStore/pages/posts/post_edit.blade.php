@@ -25,7 +25,7 @@
                         </div>
                         <div class="form-group">
                             <label>Nội dung</label>
-                            <textarea name="content" class="form-control" placeholder="Nội dung">{{ $data['update']->content }}</textarea>
+                            <textarea name="content" class="form-control" id="content" placeholder="Nội dung">{{ $data['update']->content }}</textarea>
                         </div>
                     </div>
                     <div class="col-lg-5">
@@ -59,9 +59,15 @@
                         </div>
                         <div class="form-group">
                             <label>Ảnh Thumnail</label>
-                            <input type="file" name="imagePost" value=""  class="form-control">
-                             <div class="mt-5" style="text-align: center;">
-                                <img src="{{ $data['update']->image }}" class="images" alt="" style="width:60%;margin:10px 0">
+                            <div class="form-group drop-file relative">
+                                <div class="active after drop-image">
+                                    <div class="b-drop">
+                                        Mời chọn file ảnh <span class="select_file">chọn file</span>
+                                    </div>
+                                </div>
+                                <div class="fill active"></div>
+                                <input class="form-control file-upload" id="file" type="file" name="image" >
+                                <div class="preview" style="background: #eef0f8 url({{$data['update']->image}}) no-repeat top center; background-size: contain; display: block; background-position: center"></div>
                             </div>
                         </div>
                     </div>

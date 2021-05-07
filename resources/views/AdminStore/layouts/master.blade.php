@@ -30,6 +30,26 @@
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/popper.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/tyniMCE.min.js" referrerpolicy="origin"></script>
 <script type="text/javascript" type="text/javascript" src="js/main.js"></script>
+<script>
+    tinymce.init({
+      selector: 'textarea#content',
+          // selector: ,
+          height: 400,
+          plugins: [
+          'advlist autolink link image lists charmap print preview hr anchor pagebreak',
+          'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+          'table emoticons template paste help'
+          ],
+          toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons',
+          menu: {
+            favs: {title: 'My Favorites', items: 'code visualaid | searchreplace | emoticons'}
+        },
+        menubar: 'favs file edit view insert format tools table help',
+        content_css: 'css/content.css',
+
+    });
+</script>
 @yield('scripts')
 </html>

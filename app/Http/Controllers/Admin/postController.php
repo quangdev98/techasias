@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
 use App\Services\PostServices;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -69,6 +70,15 @@ class PostController extends Controller
             return redirect()->route('ad.post')->with('success','Xóa bài viết thành công');
         } catch (\Exception $e) {
             abort('500');
+        }
+    }
+    public function searchForm()
+    {
+        try {
+            $data = request()->only('title');
+            return response()->json($this->postServices->search($data));
+        } catch (\Exception $e){
+            return response()->json($e->getMessage());
         }
     }
 }

@@ -22,7 +22,7 @@ use App\Repositories\Users\UserRepositoryInterface;
  	public function store($data)
  	{
 
-        $image = Helpers::handleStoreImage(request()->thumbnail_id_card->getClientOriginalName(),'user');
+        $image = Helpers::handleStoreImage(request()->file('image'),'user');
         $dataStore = [
             'image'=> $image,
             'name'=> $data['name'],

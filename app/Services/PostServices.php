@@ -58,7 +58,7 @@ class PostServices
 			'image'=> $image,
 
 		];
-		return $this->postRepository->update($dataUpdate, $id);
+		return $this->postRepository->update($id, $dataUpdate);
 	}
 
 	public function destroy($id)
@@ -66,6 +66,11 @@ class PostServices
 		Helpers::handleDeleteImage('post', 'posts', $id);
 		$delete = DB::table('post')->where('id','=',$id)->delete();
 	}
+
+	public function search($data)
+    {
+        return $this->postRepository->search($data);
+    }
 }
 
 

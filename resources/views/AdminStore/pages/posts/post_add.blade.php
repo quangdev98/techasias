@@ -25,8 +25,8 @@
                         </div>
                         <div class="form-group">
                             <label>Nội dung</label>
-                            <textarea name="content" class="form-control" placeholder="Nội dung"></textarea>
-                        </div>                        
+                            <textarea name="content" class="form-control" id="content" placeholder="Nội dung"></textarea>
+                        </div>
                     </div>
                     <div class="col-lg-5">
                         <div class="form-group">
@@ -35,12 +35,12 @@
                                 <option value="1">Bản nháp</option>
                                 <option value="2">Chờ duyệt</option>
                                 <option value="3">Đã xuất bản</option>
-                            </select>    
+                            </select>
                         </div>
                         <div class="form-group">
                             <label>Thẻ</label>
                             <input class="form-control" id="tags" required="" value="" name="tag" data-role="tagsinput" />
-                        </div> 
+                        </div>
                         <div class="form-group">
                             <label>Tác giả</label>
                             <select class="form-control" name="user_id">
@@ -48,11 +48,11 @@
                                     <option value="{{ $ui->id}}">{{ $ui->name}}</option>
                                 @endforeach
                             </select>
-                        </div> 
+                        </div>
                         <div class="form-group">
                             <label>Danh mục</label>
                             <select class="form-control" name="cate_id">
-                                
+
                                @foreach($postCreate['cate_id'] as $ci)
                                     <option value="{{ $ci->id}}">{{ $ci->name}}</option>
                                 @endforeach
@@ -60,12 +60,21 @@
                         </div>
                         <div class="form-group">
                             <label>Ảnh Thumnail</label>
-                            <input type="file" name="imagePost" value="" required="true" class="form-control">
+                            <div class="form-group drop-file relative">
+                                <div class="active after drop-image">
+                                    <div class="b-drop">
+                                        Mời chọn file ảnh <span class="select_file">chọn file</span>
+                                    </div>
+                                </div>
+                                <div class="fill"></div>
+                                <input class="form-control file-upload" id="file" type="file" name="imagePost" >
+                                <div class="preview"></div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-lg-12">     
+                    <div class="col-lg-12">
                         <button type="submit" name="submit" class="btn btn-success">Thêm mới</button>
-                    </div>          
+                    </div>
             </div>
             <!-- /.row -->
         </div>
@@ -75,4 +84,4 @@
     <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
     {!! JsValidator::formRequest('App\Http\Requests\PostRequest', '#addPost'); !!}
    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
-@stop     
+@stop

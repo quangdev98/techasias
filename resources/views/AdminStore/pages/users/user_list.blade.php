@@ -39,12 +39,32 @@
                         <td><img class="image-table" src="{{ $u->image }}" alt=""></td>
                         <td>{{ $u->name }}</td>
                         <td>{{ $u->countPost }}</td>
-                        <td class="center"><a href="{{ route('ad.destroy-user',['id'=> $u->id]) }}"><i class="fad fa-trash-alt"></i></a></td>
+                        <td class="center"><a href="#" data-toggle="modal" data-url="{{ route('ad.destroy-user',['id'=> $u->id]) }}" data-content="{{$u->name}}" data-target="#delete-modal" class="destroyForm"><i class="fad fa-trash-alt"></i></a></td>
                         <td class="center"><a href="{{ route('ad.edit-user',['id'=> $u->id]) }}"><i class="fad fa-pencil"></i></a></td>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
+        </div>
+    </div>
+    <div class="modal modal-danger fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="Delete" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form action="" method="post" id="deleteForm" name="delete-category">
+                    @csrf
+                    <div class="modal-header">
+
+                    </div>
+                    <div class="modal-body">
+                        <p class="text-center font-bold mb-4">Bạn có muốn xoá nó không？</p>
+                        <p class="text-center" id="contentModal"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn big bg-gray" data-dismiss="modal">Trở lại</button>
+                        <button type="submit" class="btn big bg-blue" name="action" value="delete">Xoá bỏ</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
     <!-- /.row -->

@@ -141,12 +141,48 @@ $(document).ready(function(){
       });
 
     //   delete form
-      $(document).on('click','.destroyForm',function(){
-          const url = $(this).data('url');
-          console.log(url);
-          $('#deleteForm').attr('action', url);
-      });
+    $(document).on('click','.destroyForm',function(){
+        const url = $(this).data('url');
+        const content = $(this).data('content');
+        $('#deleteForm').attr('action', url);
+        $('#contentModal').html(content);
+    });
 
     //rút gọn văn bản
+    var showChar = 140;
+    var showCharTitle = 90;
+	var ellipsestext = "...";
+    var data = ['textContent', 'textContentTitle'];
+    data.forEach( function(value){
 
+        $('.'+value).each(function() {
+            var content = $(this).html();
+            if(content.length > showChar) {
+                var c = content.substr(0, showChar);
+                var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp';
+                $(this).html(html);
+            }
+
+        });
+    });
+	// $('.textContent').each(function() {
+	// 	var content = $(this).html();
+	// 	if(content.length > showChar) {
+	// 		var c = content.substr(0, showChar);
+	// 		var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp';
+	// 		$(this).html(html);
+	// 	}
+
+	// });
+    // $('.textContentTitle').each(function() {
+	// 	var content = $(this).html();
+	// 	if(content.length > showCharTitle) {
+	// 		var c = content.substr(0, showCharTitle);
+	// 		var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp';
+	// 		$(this).html(html);
+	// 	}
+
+	// });
  })
+{/* <script src="https://code.jquery.com/jquery-1.10.2.js"></script> */}
+//

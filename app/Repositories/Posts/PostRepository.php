@@ -14,7 +14,7 @@
     return DB::table(self::TABLE)
     ->leftjoin('category', 'post.cate_id', '=','category.id')
     ->leftjoin('users', 'post.user_id','=','users.id')
-    ->select('post.id','post.title','post.contentHot','post.status','category.name as categoryName', 'users.name as author')
+    ->select('post.id','post.image','post.slug','post.title','post.contentHot','post.status','category.name as categoryName', 'users.name as author')
     ->orderBy('post.id','asc')->get();
     }
 
@@ -42,7 +42,7 @@
     {
         DB::beginTransaction();
         try {
-            if(DB::table('post')->where('id','=', $_id)->update($_data)){
+            if(DB::table(self::TABLE)->where('id','=', $_id)->update($_data)){
                 DB::commit();
                 return true;
             }
@@ -57,5 +57,22 @@
     public function delete($_id)
     {
 
+    }
+
+    public function search($_query)
+    {
+        if (request()->ajax()) {
+            $_query = request()->search;
+            return DB::table(self::TABLE)
+            ->leftjoin('category', 'post.cate_id', '=','category.id')
+            ->leftjoin('users', 'post.user_id','=','users.id')
+            ->select('post.id','post.image','post.slug','post.title','post.contentHot','post.status','category.name as categoryName', 'users.name as author')
+            ->when(!empty($_query), function ($query) use ($_query){
+                return $query->where('post.title', 'LIKE', '%'.$_query.'%')
+                        ->orWhere('users.name', 'LIKE', '%'.$_query.'%')
+                        ->orWhere('category.name', 'LIKE', '%'.$_query.'%');
+            })
+            ->orderBy('post.id','asc')->get();
+        }
     }
  }

@@ -38,6 +38,8 @@ Route::group(['prefix'=>'posts'], function(){
 	Route::get('update/{id}','PostController@edit')->name('edit-post');
 	Route::post('update/{id}','PostController@update')->name('update-post');
 	Route::post('destroy/{id}','PostController@destroy')->name('destroy-post');
+    // Route::get('search-form', 'PostController@getSearchForm')->name('getSearchForm');
+    Route::get('search-form', 'PostController@searchForm')->name('searchForm');
 
 });
 Route::group(['prefix'=>'users'], function(){
@@ -46,7 +48,7 @@ Route::group(['prefix'=>'users'], function(){
 	Route::post('create-user','UserController@store')->name('store-user');
 	Route::get('update-user/{id}','UserController@edit')->name('edit-user');
 	Route::post('update-user/{id}','UserController@update')->name('update-user');
-	Route::get('destroy-user/{id}','UserController@destroy')->name('destroy-user');
+	Route::post('destroy-user/{id}','UserController@destroy')->name('destroy-user');
 	// Route::post('destroy-user/{id}','UserController@destroyUser')->name('destroy-user-post');
 
 

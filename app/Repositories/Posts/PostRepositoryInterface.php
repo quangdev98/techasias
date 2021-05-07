@@ -13,4 +13,6 @@ interface PostRepositoryInterface
     public function update($_id, $_data);
 
     public function delete($_id);
+
+    public function search($_query);
 }

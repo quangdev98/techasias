@@ -47,7 +47,7 @@
                             </div>
                         </div>
                         <div class="fill"></div>
-                        <input class="form-control file-upload" id="file" type="file" name="thumbnail_id_card" >
+                        <input class="form-control file-upload" id="file" type="file" name="image" >
                         <div class="preview"></div>
                     </div>
                 </div>
