@@ -2,22 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="316de9c3-2670-428e-9f48-ddb69284881b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/techasias.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/techasias.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/postController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/postController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/Posts/PostRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/Posts/PostRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/Posts/PostRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/Posts/PostRepositoryInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/PostServices.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/PostServices.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/UserServices.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/UserServices.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/AdminStore/pages/categorys/cate_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/AdminStore/pages/categorys/cate_list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/AdminStore/pages/posts/post_edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/AdminStore/pages/posts/post_edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/AdminStore/pages/posts/post_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/AdminStore/pages/posts/post_list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/AdminStore/pages/users/user_add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/AdminStore/pages/users/user_add.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/AdminStore/pages/users/user_edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/AdminStore/pages/users/user_edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/AdminStore/pages/users/user_list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/AdminStore/pages/users/user_list.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/admin.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -284,6 +270,12 @@
       <workItem from="1620368830598" duration="93000" />
       <workItem from="1620368950202" duration="717000" />
       <workItem from="1620369695716" duration="902000" />
+      <workItem from="1620635010245" duration="915000" />
+      <workItem from="1620717663349" duration="674000" />
+      <workItem from="1620898082943" duration="1033000" />
+      <workItem from="1620969984075" duration="324000" />
+      <workItem from="1621006200940" duration="236000" />
+      <workItem from="1621565499190" duration="707000" />
     </task>
     <servers />
   </component>

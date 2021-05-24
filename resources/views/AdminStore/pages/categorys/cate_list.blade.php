@@ -36,7 +36,7 @@
                         <tr align="center">
                             <td>{{ $cate->id }}</td>
                             <td>{{ $cate->name }}</td>
-                            <td>{{ $cate->number_cate }}</td>
+                            <td><a href="{{ route('ad.post', ['category' => $cate->name]) }}" title="">{{ $cate->number_cate }}</a></td>
                             <td class="center"><a href="#" data-toggle="modal" data-url="{{ route('ad.destroy-category',['id'=> $cate->id ]) }}" data-content="{{$cate->name}}" data-target="#delete-modal" class="destroyForm"><i class="fad fa-trash-alt"></i></a></td>
                             <td class="center"><a href="{{ route('ad.edit-category',['id'=>$cate->id])}}"><i class="fad fa-pencil"></i></a></td>
                         </tr>

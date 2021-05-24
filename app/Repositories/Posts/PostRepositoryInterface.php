@@ -4,7 +4,7 @@ namespace App\Repositories\Posts;
 
 interface PostRepositoryInterface
 {
-    public function getList();
+    public function getList($_data);
 
     public function store($_data);
 
@@ -15,4 +15,6 @@ interface PostRepositoryInterface
     public function delete($_id);
 
     public function search($_query);
+
+    public function detail($_id);
 }

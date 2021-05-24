@@ -14,8 +14,8 @@ class PostServices
          $this->postRepository = $postRepository;
      }
 
-	public function index(){
-		return $this->postRepository->getList();
+	public function index($data){
+		return $this->postRepository->getList($data);
 	}
 	public function create()
 	{
@@ -70,6 +70,11 @@ class PostServices
 	public function search($data)
     {
         return $this->postRepository->search($data);
+    }
+
+    public function detail($id)
+    {
+        return $this->postRepository->detail($id);
     }
 }
 

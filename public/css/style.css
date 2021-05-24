@@ -43,6 +43,7 @@ body .container-fluid{background: #fff;border-radius: 5px;padding: 20px 30px;pos
 .padding-2{padding:0 30px;}
 .padding-top{padding-top: 20px}
 body .wrapTable{width: 100%}
+body .img-small{width:100%; max-width: 300px;}
 /*body*/
 body textarea{min-height: 126px}
 body input[type="checkbox"]{width: 15px;margin-right: 15px;}
@@ -149,6 +150,7 @@ main#wrap-main .list-product .form-group a.button{display: block;transition: .3s
 main#wrap-main .list-product .form-group a.button:hover{background: var(--color-main-green);color: #fff}
 main#wrap-main #customers{width: 100%}
 main#wrap-main #customers td, main#wrap-main #customers th {color: #6a6a6a}
+main#wrap-main .table td, main#wrap-main .table th {vertical-align: inherit;}
 main#wrap-main #customers td:last-child, main#wrap-main #customers th:last-child {width:60px;}
 main#wrap-main #customers thead tr, main#wrap-main #customers tr:nth-child(even){background: #FAFBFF}
 main#wrap-main #customers th{font-family: var(--font-bold);color: #000}

@@ -16,10 +16,11 @@ class PostController extends Controller
 	{
 		$this->postServices = $postServices;
 	}
-    public function index(){
+    public function index(Request $request){
         try {
-            $post = $this->postServices->index();
-            return view('AdminStore.pages.posts.post_list', compact('post'));
+            $data = $request->all();
+            $post = $this->postServices->index($data);
+            return view('AdminStore.pages.posts.post_list', compact(['post', 'data']));
         } catch (\Exception $e) {
             abort('500');
         }
@@ -72,6 +73,18 @@ class PostController extends Controller
             abort('500');
         }
     }
+
+    public function detail($id)
+    {
+        try {
+            $data['detail'] = $this->postServices->detail($id);
+            return view('AdminStore.pages.posts.post_details', compact(['data']));
+        } catch (\Exception $e) {
+            // dd($e);
+            abort('500');
+        }
+    }
+
     public function searchForm()
     {
         try {

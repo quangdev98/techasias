@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Admin Routes
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
@@ -38,7 +38,7 @@ Route::group(['prefix'=>'posts'], function(){
 	Route::get('update/{id}','PostController@edit')->name('edit-post');
 	Route::post('update/{id}','PostController@update')->name('update-post');
 	Route::post('destroy/{id}','PostController@destroy')->name('destroy-post');
-    // Route::get('search-form', 'PostController@getSearchForm')->name('getSearchForm');
+    Route::get('detail/{id}', 'PostController@detail')->name('post-detail');
     Route::get('search-form', 'PostController@searchForm')->name('searchForm');
 
 });
@@ -49,7 +49,5 @@ Route::group(['prefix'=>'users'], function(){
 	Route::get('update-user/{id}','UserController@edit')->name('edit-user');
 	Route::post('update-user/{id}','UserController@update')->name('update-user');
 	Route::post('destroy-user/{id}','UserController@destroy')->name('destroy-user');
-	// Route::post('destroy-user/{id}','UserController@destroyUser')->name('destroy-user-post');
-
 
 });

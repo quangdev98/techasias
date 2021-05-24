@@ -19,7 +19,7 @@
                 <div class="wrap-control">
                     <div class="formSearch">
                         <div>
-                            <input autocomplete="off" type="text" name="name" id="searchName" placeholder="Tìm kiếm">
+                            <input autocomplete="off" type="text" name="name" id="searchName" placeholder="Tìm kiếm" value="{{ isset($data['author']) ? $data['author'] : (isset($data['category']) ? $data['category'] : '') }}">
                             <span id="searchIcon"><i class="fal fa-search"></i></span>
                         </div>
                         {{ csrf_field() }}
@@ -47,16 +47,14 @@
                             @foreach( $post as $p )
                                 <tr class="" align="center">
                                     <td>{{ $p->id }}</td>
-                                    <td><img class="image-table" src="{{$p->image}}" alt="{{$p->slug}}"></td>
+                                    <td><a href="{{ route('ad.post-detail',['id' => $p->id]) }}" title=""><img class="image-table" src="{{$p->image}}" alt="{{$p->slug}}"></a></td>
                                     <td>
-                                        <div class="textContentTitle">{{ $p->title }}</div>
+                                        <div class="textContentTitle"><a href="{{ route('ad.post-detail',['id' => $p->id]) }}" title="">{{ $p->title }}</a></div>
                                     </td>
                                     <td>{{ $p->categoryName }}</td>
                                     <td>{{ $p->author }}</td>
                                     <td>
-                                        {{ $p->status == 1 ? 'Bản nháp' : ''}}
-                                        {{ $p->status == 2 ? 'Chờ duyệt' : ''}}
-                                        {{ $p->status == 3 ? 'Đã xuất bản' : ''}}
+                                        {{ $p->status == 1 ? 'Bản nháp' : ($p->status == 2 ? 'Chờ duyệt' : 'Đã xuất bản')}}
                                     </td>
                                     <td class="center"><a href="#" data-toggle="modal" data-url="{{ route('ad.destroy-post', ['id'=> $p->id]) }}" data-target="#delete-modal" class="destroyForm"><i class="fad fa-trash-alt"></i></a></td>
                                     <td class="center"><a href="{{ route('ad.edit-post',['id'=> $p->id]) }}"><i class="fad fa-pencil"></i></a></td>

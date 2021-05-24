@@ -9,12 +9,21 @@
  {
     const TABLE = 'post';
 
-    public function getList()
+    public function getList($_data)
     {
-    return DB::table(self::TABLE)
+    $db = DB::table(self::TABLE)
     ->leftjoin('category', 'post.cate_id', '=','category.id')
-    ->leftjoin('users', 'post.user_id','=','users.id')
-    ->select('post.id','post.image','post.slug','post.title','post.contentHot','post.status','category.name as categoryName', 'users.name as author')
+    ->leftjoin('users', 'post.user_id','=','users.id');
+    if($_data){
+        $db->when(!empty($_data['author']), function ($query) use ($_data){
+            return $query->where('users.name','=', $_data['author']);
+        })
+        ->when(!empty($_data['category']), function ($query) use ($_data){
+            return $query->where('category.name','=', $_data['category']);
+        });
+    }
+    // dd($_data);
+    return $db->select('post.id','post.image','post.slug','post.title','post.contentHot','post.status','category.name as categoryName', 'users.name as author','users.slug as slug_name')
     ->orderBy('post.id','asc')->get();
     }
 
@@ -74,5 +83,14 @@
             })
             ->orderBy('post.id','asc')->get();
         }
+    }
+
+    public function detail($_id)
+    {
+        return DB::table(self::TABLE)
+        ->leftjoin('category', 'post.cate_id', '=','category.id')
+        ->leftjoin('users', 'post.user_id','=','users.id')
+        ->select('post.id', 'post.image', 'post.slug', 'post.title', 'post.contentHot', 'post.status','post.content', 'category.name as name_category', 'users.name as name_user')
+        ->where('post.id','=',$_id)->first();
     }
  }

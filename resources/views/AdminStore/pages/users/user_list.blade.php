@@ -17,7 +17,7 @@
             <h1 class="page-header">Danh sách danh mục
                 <small></small>
             </h1>
-            <p class="addQuery"><a href="{{ route('ad.create-user') }}">Thêm người viết</a></p>
+            <p class="addQuery"><a href="{{ route('ad.create-user') }}" title="">Thêm người viết</a></p>
         </div>
         <!-- /.col-lg-12 -->
         <div class="wrapTable">
@@ -38,7 +38,7 @@
                         <td>{{ $u->id }}</td>
                         <td><img class="image-table" src="{{ $u->image }}" alt=""></td>
                         <td>{{ $u->name }}</td>
-                        <td>{{ $u->countPost }}</td>
+                        <td><a href="{{ route('ad.post', ['author' => $u->name]) }}" title="">{{ $u->countPost }}</a></td>
                         <td class="center"><a href="#" data-toggle="modal" data-url="{{ route('ad.destroy-user',['id'=> $u->id]) }}" data-content="{{$u->name}}" data-target="#delete-modal" class="destroyForm"><i class="fad fa-trash-alt"></i></a></td>
                         <td class="center"><a href="{{ route('ad.edit-user',['id'=> $u->id]) }}"><i class="fad fa-pencil"></i></a></td>
                     </tr>
