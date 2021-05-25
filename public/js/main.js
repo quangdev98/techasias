@@ -165,24 +165,6 @@ $(document).ready(function(){
 
         });
     });
-	// $('.textContent').each(function() {
-	// 	var content = $(this).html();
-	// 	if(content.length > showChar) {
-	// 		var c = content.substr(0, showChar);
-	// 		var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp';
-	// 		$(this).html(html);
-	// 	}
-
-	// });
-    // $('.textContentTitle').each(function() {
-	// 	var content = $(this).html();
-	// 	if(content.length > showCharTitle) {
-	// 		var c = content.substr(0, showCharTitle);
-	// 		var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp';
-	// 		$(this).html(html);
-	// 	}
-
-	// });
  })
 {/* <script src="https://code.jquery.com/jquery-1.10.2.js"></script> */}
 //

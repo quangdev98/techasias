@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostRequest;
-use App\Services\PostServices;
+use App\Services\Manager\PostServices;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
