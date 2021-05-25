@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Services\UserServices;
+use App\Services\Manager\UserServices;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 
-class userController extends Controller
+class UserController extends Controller
 {
 	private $userServices;
 
@@ -21,7 +21,7 @@ class userController extends Controller
     	$user = $this->userServices->index();
     	return view('AdminStore.pages.users.user_list',compact('user'));
     }
-    
+
     public function create()
     {
     	return view('AdminStore.pages.users.user_add');
@@ -36,7 +36,7 @@ class userController extends Controller
 
     public function edit($id)
     {
-        $update = $this->userServices->edit($id);
+        $update = $this->userServices->show($id);
         return view('AdminStore.pages.users.user_edit',compact('update'));
     }
 
@@ -46,7 +46,7 @@ class userController extends Controller
         $update = $this->userServices->update($data, $id);
         return redirect()->route('ad.user')->with('success','Sửa người dùng thành công!');
     }
-    
+
     public function destroy($id)
     {
         $this->userServices->destroy($id);

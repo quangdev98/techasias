@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class CreateUsersTable extends Migration
 {
@@ -14,10 +15,10 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-             $table->bigIncrements('id')->index();
-            $table->string('image', 400)->comment('Avatar');
+            $table->bigIncrements('id')->index();
+            $table->string('image', 400)->nullable()->default('images/user_default.png')->comment('Avatar');
             $table->string('name')->comment('Tên đầy đủ');
-             $table->string('slug',300)->nullable()->comment('Chuỗi không dấu');
+            $table->string('slug',300)->nullable()->comment('Chuỗi không dấu');
             $table->string('phone', 20)->nullable()->comment('Số điện thoại');
             $table->string('email',50)->unique()->comment('Địa chỉ Email');
             $table->string('address', 200)->nullable()->comment('Địa chỉ');

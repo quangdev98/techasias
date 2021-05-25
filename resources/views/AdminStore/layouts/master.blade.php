@@ -7,10 +7,12 @@
     {{--CSRF Token--}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>TechAsia - @yield('title')</title>
-    <link rel="stylesheet" href="{{ asset('css/bootstrap4_3_1.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/font-awesome/all.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}">
+    <base href="{{ asset('') }}">
+    <link href="images/q_favicon.png" type="image/x-icon" rel="shortcut icon">
+    <link rel="stylesheet" href="css/bootstrap4_3_1.min.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome/all.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
     @yield('style-libraries')
 </head>
 <body>
@@ -25,9 +27,29 @@
     </main>
     @include('AdminStore.partial.footer')
 </body>
-<script type="text/javascript" src="{{ asset('js/jquery.min.js')}}"></script>
-<script type="text/javascript" src="{{ asset('js/popper.min.js')}}"></script>
-<script type="text/javascript" src="{{ asset('js/bootstrap.min.js')}}"></script>
-<script type="text/javascript" type="text/javascript" src="{{ asset('js/main.js')}}"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/popper.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/tyniMCE.min.js" referrerpolicy="origin"></script>
+<script type="text/javascript" type="text/javascript" src="js/main.js"></script>
+<script>
+    tinymce.init({
+      selector: 'textarea#content',
+          // selector: ,
+          height: 400,
+          plugins: [
+          'advlist autolink link image lists charmap print preview hr anchor pagebreak',
+          'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+          'table emoticons template paste help'
+          ],
+          toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons',
+          menu: {
+            favs: {title: 'My Favorites', items: 'code visualaid | searchreplace | emoticons'}
+        },
+        menubar: 'favs file edit view insert format tools table help',
+        content_css: 'css/content.css',
+
+    });
+</script>
 @yield('scripts')
 </html>

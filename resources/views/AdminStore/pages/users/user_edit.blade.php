@@ -36,15 +36,21 @@
                 </div>
                 <div class="form-group">
                     <label>Ảnh</label>
-                    <input class="form-control" type="file" name="image" />
-                    <div class="mt-5" style="text-align: center;">
-                        <img src="../../../uploads/user/{{ $update->image }}" class="images" alt="" style="width:60%;margin:10px 0">
+                    <div class="form-group drop-file relative">
+                        <div class="active after drop-image">
+                            <div class="b-drop">
+                                Mời chọn file ảnh <span class="select_file">chọn file</span>
+                            </div>
+                        </div>
+                        <div class="fill active"></div>
+                        <input class="form-control file-upload" id="file" type="file" name="image" >
+                        <div class="preview" style="background: #eef0f8 url({{$update->image}}) no-repeat top center; background-size: contain; display: block; background-position: center"></div>
                     </div>
                 </div>
-            </div>  
+            </div>
             <div class="col-lg-12">
                 <button type="submit" name="submit" class="btn btn-success">Thêm mới</button>
-                    
+
             </div>
         </div>
         <!-- /.row -->

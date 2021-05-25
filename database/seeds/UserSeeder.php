@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
 class UserSeeder extends Seeder
@@ -14,7 +15,7 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->insert([
         	'id' => 1,
-			'image' => 'ddd.png',
+			'image' => 'images/user_default.png',
 			'name' => 'Quang Merce',
 			'slug' => 'quang-merce',
 			'email' => 'dvq.dev@gmail.com',

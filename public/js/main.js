@@ -1,25 +1,25 @@
-// 
-// 
+//
+//
 var idleMax = 30;
   var idleTime = 0;
 
-  var idleInterval = setInterval("timerIncrement()", 60000);  
+  var idleInterval = setInterval("timerIncrement()", 60000);
   $( "body" ).mousemove(function( event ) {
       idleTime = 0;
 });
 function timerIncrement() {
     idleTime = idleTime + 1;
-    if (idleTime > idleMax) { 
+    if (idleTime > idleMax) {
         window.location="login.blade.php";
     }
-} 
-   // 
-   // 
-   // 
+}
+   //
+   //
+   //
 $(document).ready(function(){
 	let widthDevice = $(document).outerWidth();
 	let footer = document.getElementById('footer');
-	let tabControl = $('#tab-controls').outerWidth();	
+	let tabControl = $('#tab-controls').outerWidth();
 	// console.log();
 	function setFooter(){
 		let heightDevice = $(document).height();
@@ -34,7 +34,7 @@ $(document).ready(function(){
 			$('footer').removeClass('position');
 		}
 	}
-	// 
+	//
 	function showMenu(){
 		let widthDevice = $(document).width();
 		if(widthDevice > 768){
@@ -115,17 +115,56 @@ $(document).ready(function(){
 	// FOOTER
 	let d = new Date();
 	document.getElementById('fecthYear').innerHTML = d.getFullYear();
-	
+
 	//alert
 	function setAlert(){
 		$('#alert').css({
 			'display': 'none',
 			'transition': 'all .5s'
 		});
-	}					
-setTimeout(setAlert, 3000);
+	}
+    setTimeout(setAlert, 3000);
 
+    // choose image
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var url = URL.createObjectURL(event.target.files[0]);
+            $(input).parent().find('span.invalid-feedback').text('');
+            $(input).parent().find('div.preview').show();
+            $(input).parent().find('div.preview').attr("style", "background: #eef0f8 url('" + url + "') no-repeat top center; background-size: contain; display: block; background-position: center");
+            $(input).parent().find('div.fill').addClass('active');
+            $(input).parent().find('.b-drop').addClass('active');
+        }
+    }
+    $("#file").change(function() {
+        readURL(this);
+      });
 
-//rút gọn văn bản
+    //   delete form
+    $(document).on('click','.destroyForm',function(){
+        const url = $(this).data('url');
+        const content = $(this).data('content');
+        $('#deleteForm').attr('action', url);
+        $('#contentModal').html(content);
+    });
 
+    //rút gọn văn bản
+    var showChar = 140;
+    var showCharTitle = 90;
+	var ellipsestext = "...";
+    var data = ['textContent', 'textContentTitle'];
+    data.forEach( function(value){
+
+        $('.'+value).each(function() {
+            var content = $(this).html();
+            if(content.length > showChar) {
+                var c = content.substr(0, showChar);
+                var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp';
+                $(this).html(html);
+            }
+
+        });
+    });
  })
+{/* <script src="https://code.jquery.com/jquery-1.10.2.js"></script> */}
+//

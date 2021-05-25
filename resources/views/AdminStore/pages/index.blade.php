@@ -6,6 +6,6 @@
         '.Session::get('success').'
     </div>' : ''!!}
 
-<h1>Chào mừng <?php  print_r(Auth::guard('admin')->user()->name) ?>!</h1>
+<h1>Chào mừng {!! Auth::guard('admin')->user()->name !!} !</h1>
 <h6>Trang quản trị</h6>
 @stop

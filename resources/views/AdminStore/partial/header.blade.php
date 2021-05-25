@@ -12,9 +12,9 @@
                 <a class="uuuuser dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
                     <div class="user">
                         <span class="interFaceUser">
-                            <img src="http://newspapr.conn/admins/dist/img/user.webp" alt="">
+                            <img src="{!! Auth::guard('admin')->user()->image !!}" alt="">
                         </span>
-                        <span class="nameUser"><?php  print_r(Auth::guard('admin')->user()->name) ?></span>
+                        <span class="nameUser">{!!  Auth::guard('admin')->user()->name !!}</span>
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-user">

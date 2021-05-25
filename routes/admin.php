@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Web Routes
+| Admin Routes
 |--------------------------------------------------------------------------
 |
 | Here is where you can register web routes for your application. These
@@ -18,9 +18,9 @@ Route::get('/', function () {
 });
 
 // Route::get('home','ControlController@index')->name('admin');
-// Route::group(['middleware' => ['auth:admin']], function () {  
-		Route::get('/', 'ControlController@index')->name('admin')->middleware('admin'); 
-	
+// Route::group(['middleware' => ['auth:admin']], function () {
+		Route::get('/', 'ControlController@index')->name('admin')->middleware('admin');
+
 // });
 //category
 Route::group(['prefix'=>'categorys'], function(){
@@ -28,7 +28,7 @@ Route::group(['prefix'=>'categorys'], function(){
 	Route::post('post-create','CategoryController@store')->name('store-category');
 	Route::get('update/{id}','CategoryController@edit')->name('edit-category');
 	Route::post('update/{id}','CategoryController@update')->name('update-category');
-	Route::get('destroy/{id}','CategoryController@destroy')->name('destroy-category');
+	Route::post('destroy/{id}','CategoryController@destroy')->name('destroy-category');
 });
 //post
 Route::group(['prefix'=>'posts'], function(){
@@ -37,7 +37,9 @@ Route::group(['prefix'=>'posts'], function(){
 	Route::post('create','PostController@store')->name('store-post');
 	Route::get('update/{id}','PostController@edit')->name('edit-post');
 	Route::post('update/{id}','PostController@update')->name('update-post');
-	Route::get('destroy/{id}','PostController@destroy')->name('destroy-post');
+	Route::post('destroy/{id}','PostController@destroy')->name('destroy-post');
+    Route::get('detail/{id}', 'PostController@detail')->name('post-detail');
+    Route::get('search-form', 'PostController@searchForm')->name('searchForm');
 
 });
 Route::group(['prefix'=>'users'], function(){
@@ -46,8 +48,6 @@ Route::group(['prefix'=>'users'], function(){
 	Route::post('create-user','UserController@store')->name('store-user');
 	Route::get('update-user/{id}','UserController@edit')->name('edit-user');
 	Route::post('update-user/{id}','UserController@update')->name('update-user');
-	Route::get('destroy-user/{id}','UserController@destroy')->name('destroy-user');
-	// Route::post('destroy-user/{id}','UserController@destroyUser')->name('destroy-user-post');
-	
-	
+	Route::post('destroy-user/{id}','UserController@destroy')->name('destroy-user');
+
 });
