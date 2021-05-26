@@ -13,10 +13,10 @@
 			<div class="row ">
 				<div class="col-lg-6">
 					<ul class="main-navigation side-navigation list-inline flex-column">
-						<li><a href="{{ route('web.business') }}">Kinh Doanh</a></li>
-						<li><a href="{{ route('web.life-style') }}">Phong Cách Sống</a></li>
-						<li><a href="{{ route('web.technology') }}">Công Nghệ</a></li>
-						<li><a href="{{ route('web.sports') }}">Thể Thao</a></li>
+						<li class="{{ \Route::current()->getName() == 'web.business' ? 'is-active' : '' }}"><a href="{{ route('web.business') }}">Kinh Doanh</a></li>
+						<li class="{{ \Route::current()->getName() == 'life-style' ? 'is-active' : '' }}"><a href="{{ route('web.life-style') }}">Phong Cách Sống</a></li>
+						<li class="{{ \Route::current()->getName() == 'technology' ? 'is-active' : '' }}"><a href="{{ route('web.technology') }}">Công Nghệ</a></li>
+						<li class="{{ \Route::current()->getName() == 'sports' ? 'is-active' : '' }}"><a href="{{ route('web.sports') }}">Thể Thao</a></li>
 					</ul>
 					<!-- End of .main-navigation -->
 				</div>
@@ -107,27 +107,27 @@
 				<!-- End of .brand-logo-container -->
 				<div class="main-nav-wrapper">
 					<ul class="main-navigation list-inline" id="main-menu">
-						<li class="{{ \Route::current()->getName() == 'business' ? "is-active" : " " }}">
+						<li class="{{ \Route::current()->getName() == 'business' ? 'is-active' : '' }}">
 							<a href="{{ route('web.business') }}">Kinh Doanh</a>
 						</li>
-						<li class="{{ \Route::current()->getName() == 'life-style' ? "is-active" : " " }}">
+						<li class="{{ \Route::current()->getName() == 'life-style' ? 'is-active' : '' }}">
 							<a href="{{ route('web.life-style')}}">Phong Cách Sống</a>
 						</li>
-						<li class="{{ \Route::current()->getName() == 'technology' ? "is-active" : " " }}">
+						<li class="{{ \Route::current()->getName() == 'technology' ? 'is-active' : '' }}">
 							<a href="{{ route('web.technology') }}">Công Nghệ</a></li>
-						<li class="{{ \Route::current()->getName() == 'sports' ? "is-active" : " " }}">
+						<li class="{{ \Route::current()->getName() == 'sports' ? 'is-active' : '' }}">
 							<a href="{{ route('web.sports') }}">Thể Thao</a>
 						</li>
 						<li class="has-dropdown">
 							<a href="#">Khác</a>
 							<ul class="submenu">
-								<li class="{{ \Route::current()->getName() == 'author' ? "is-active" : " " }}"><a href="{{ route('web.author') }}">Tác Giả</a></li>
+								<li class="{{ \Route::current()->getName() == 'author' ? 'is-active' : '' }}"><a href="{{ route('web.author') }}">Tác Giả</a></li>
 								{{-- <li><a href="{{ route('web.error-404') }}">404 Error</a></li> --}}
-								<li class="{{ \Route::current()->getName() == 'under-construction' ? "is-active" : " " }}"><a href="{{ route('web.under-construction') }}">Coming Soon</a></li>
-								<li class="{{ \Route::current()->getName() == 'about-us' ? "is-active" : " " }}"><a href="{{ route('web.about-us') }}">Về Chúng Tôi</a></li>
-								<li class="{{ \Route::current()->getName() == 'team' ? "is-active" : " " }}"><a href="{{ route('web.team') }}">Nhóm</a></li>
-								<li class="{{ \Route::current()->getName() == 'contact' ? "is-active" : " " }}"><a href="{{ route('web.contact') }}">Liên Hệ Chúng tôi</a></li>
-								<li class="{{ \Route::current()->getName() == 'login' ? "is-active" : " " }}"><a href="{{ route('web.login') }}">Đăng Nhập</a></li>
+								<li class="{{ \Route::current()->getName() == 'under-construction' ? 'is-active' : '' }}"><a href="{{ route('web.under-construction') }}">Coming Soon</a></li>
+								<li class="{{ \Route::current()->getName() == 'about-us' ? 'is-active' : '' }}"><a href="{{ route('web.about-us') }}">Về Chúng Tôi</a></li>
+								<li class="{{ \Route::current()->getName() == 'team' ? 'is-active' : '' }}"><a href="{{ route('web.team') }}">Nhóm</a></li>
+								<li class="{{ \Route::current()->getName() == 'contact' ? 'is-active' : '' }}"><a href="{{ route('web.contact') }}">Liên Hệ Chúng tôi</a></li>
+								<li class="{{ \Route::current()->getName() == 'login' ? 'is-active' : '' }}"><a href="{{ route('web.login') }}">Đăng Nhập</a></li>
 
 							</ul>
 							<!-- End of .submenu -->
