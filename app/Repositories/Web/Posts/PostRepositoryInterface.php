@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Repositories\Web\Business;
+namespace App\Repositories\Web\Posts;
 
 
-interface BusinessRepositoryInterface
+interface PostRepositoryInterface
 {
-    public function getBusiness($_slug);
+    public function detail($_id);
 
     // public function store($_data);
 

@@ -4,24 +4,28 @@
             <div class="col-lg-8">
                 <main class="axil-content">
                     @yield('randomTop')
-                    @foreach ( $data as $value)
-                        <div class="media post-block post-block__mid m-b-xs-30">
-                            <a href="post-format-standard.html" class="align-self-center"><img class=" m-r-xs-30"
-                                    src="{{ $value->image }}" alt=""></a>
-                            <div class="media-body">
-                                <div class="post-cat-group m-b-xs-10">
-                                    <a href="{{ route('web.business') }}" class="post-cat cat-btn bg-color-blue-one">{{ $value -> categoryName}}</a>
-                                </div>
-                                <h3 class="axil-post-title hover-line hover-line"><a href="post-format-standard.html">{{ $value->title}}</a></h3>
-                                <p class="mid contentHot">{{ $value->contentHot}}</p>
-                                <div class="post-metas">
-                                    <ul class="list-inline">
-                                        <li>By <a href="#">{{ $value->author}}</a></li>
-                                    </ul>
+                    @if(!empty($data))
+                        @foreach ( $data as $value)
+                            <div class="media post-block post-block__mid m-b-xs-30">
+                                <a href="post-format-standard.html" class="align-self-center"><img class=" m-r-xs-30"
+                                        src="/{{ $value->image }}" alt=""></a>
+                                <div class="media-body">
+                                    <div class="post-cat-group m-b-xs-10">
+                                        <a href="{{ route('web.business', ['slug'=> $value->slug]) }}" class="post-cat cat-btn bg-color-blue-one">{{ $value -> categoryName}}</a>
+                                    </div>
+                                    <h3 class="axil-post-title hover-line hover-line"><a href="{{ route('web.post-detail',['id' => $value->id]) }}">{{ $value->title}}</a></h3>
+                                    <p class="mid contentHot">{{ $value->contentHot}}</p>
+                                    <div class="post-metas">
+                                        <ul class="list-inline">
+                                            <li>By <a href="#">{{ $value->author}}</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    @else
+                        <p class="text-center">NOT POST!</p>
+                    @endif
                     <!-- End of .post-block -->
 
                 </main>

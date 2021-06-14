@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {{--CSRF Token--}}
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>TechAsia - @yield('title')</title>
+    <title>クアン・メルセデス - @yield('title')</title>
     <base href="{{ asset('') }}">
     <link href="images/q_favicon.png" type="image/x-icon" rel="shortcut icon">
     <link rel="stylesheet" href="css/bootstrap4_3_1.min.css">

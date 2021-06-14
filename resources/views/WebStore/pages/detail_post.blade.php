@@ -6,8 +6,8 @@
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item"><a href="{{ route('web.home')}}">Home</a></li>
-						<li class="breadcrumb-item"><a href="{{route('web.business')}}">Business</a></li>
-						<li class="breadcrumb-item active" aria-current="page">Post Name</li>
+						<li class="breadcrumb-item"><a href="{{route('web.business',['slug'=>''])}}">Business</a></li>
+						<li class="breadcrumb-item active" aria-current="page">{{ $data->slug }}</li>
 					</ol>
 					<!-- End of .breadcrumb -->
 				</nav>
@@ -23,17 +23,15 @@
 					<div class="col-lg-6">
 						<div class="post-title-wrapper">
 							<div class="btn-group">
-								<a href="{{ route('web.business') }}" class="cat-btn bg-color-blue-one">TECHNOLOGY</a>
+								<a href="{{ route('web.business',['slug'=>'']) }}" class="cat-btn bg-color-blue-one">{{ $data->cate_name}}</a>
 							</div>
 
-							<h2 class="m-t-xs-20 m-b-xs-0 axil-post-title hover-line">VR Is the Use of Computer
-								Technology to Create a Simulated Environment.
-							</h2>
+							<h2 class="m-t-xs-20 m-b-xs-0 axil-post-title hover-line">{{ $data->title }}</h2>
 							<div class="post-metas banner-post-metas m-t-xs-20">
 								<ul class="list-inline">
 									<li><a href="#" class="post-author post-author-with-img"><img
-												src="{{ asset('styleWeb/images/author/01.png') }}" alt="author">Ashley Graham</a></li>
-									<li><a href="#"><i class="feather icon-activity"></i>5k Views</a></li>
+												src="/{{ $data->avatar_author }}" alt="author">{{ $data->author}}</a></li>
+									<li><a href="#"><i class="feather icon-activity"></i>{{ Counter::showAndCount('web.post-detail', $data->id) }} Views</a></li>
 									<li><a href="#"><i class="feather icon-share-2"></i>230 Shares</a></li>
 								</ul>
 							</div>
@@ -44,7 +42,7 @@
 					<!-- End of .col-lg-6 -->
 
 					<div class="col-lg-6">
-						<img src="{{ asset('styleWeb/images/post/latest-post.jpg') }}" alt="" class="img-fluid" width="600" height="600">
+						<img src="/{{ $data->image }}" alt="" class="img-fluid" width="600" height="600">
 					</div>
 				</div>
 				<!-- End of .row -->
@@ -60,361 +58,7 @@
 					<div class="col-lg-8">
 						<main class="site-main">
 							<article class="post-details">
-								<div class="single-blog-wrapper">
-									<div class="post-details__social-share mt-2">
-										<ul class="social-share social-share__with-bg social-share__vertical">
-											<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-											<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-											<li><a href="#"><i class="fab fa-behance"></i></a></li>
-											<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-										</ul>
-										<!-- End of .social-share__no-bg -->
-									</div>
-									<!-- End of .social-share -->
-
-									<p> For those of us who want to say thank you to our moms, it’s not always easy to
-										put those big feelings in words. Which is where Dribbble comes in.</p>
-									<p>These eight shots crystallize the hard work moms put into keeping their kids
-										alive, happy, and healthy. They might give you the inspiration you need for
-										filling out that card—or stand alone for your mom’s interpretation.</p>
-
-									<figure>
-										<img src="{{ asset('styleWeb/images/post-single-gallery/post-single-img-1.jpg') }}" alt="img">
-										<figcaption>Drawn for an insurance company</figcaption>
-									</figure>
-
-									<p>Moms are the ones who bandage our boo-boos when we’re little and continue to take
-										care of us as we get older—often sacrificing their own needs so they can help
-										with ours. Cruising on a bike to help heal our injuries is the most mom thing
-										one can do.</p>
-									<div class="add-container m-b-xs-60">
-										<a href="#"><img src="{{ asset('styleWeb/images/clientbanner/clientbanner.jpg') }}" alt="add one"
-												class="img-fluid"></a>
-									</div>
-									<blockquote>
-										<p>
-											If you’ve been waiting for an invitation, this calligraphy is it.
-											Commissioned
-											by
-											Facebook, this is a hand-lettered design for a poster. Quote is Facebook
-											Building 8
-											VP’s
-											Regina Dugan—and mine.
-										</p>
-									</blockquote>
-
-									<p>Moms are the ones who bandage our boo-boos when we’re little and continue to take
-										care of us as we get older—often sacrificing their own needs so they can help
-										with ours. Cruising on a bike to help heal our injuries is the most mom thing
-										one can do.</p>
-
-									<p>They’re the ones we rely on for playdates and emotional support, homework help
-										and
-										babysitting. Moms are the ultimate dependable support. Like, hopefully, the
-										button
-										on
-										your
-										jeans.</p>
-
-									<h3>Here Come The Moms In Space</h3>
-
-									<ul class="row gallery text-center">
-										<li class="col-lg-6">
-											<figure>
-												<img src="{{ asset('styleWeb/images/post-single-gallery/post-single-gallery-6.jpg') }}"
-													alt="img">
-												<figcaption>Drawn for an insurance company</figcaption>
-											</figure>
-										</li>
-										<li class="col-lg-6">
-											<figure>
-												<img src="{{ asset('styleWeb/images/post-single-gallery/post-single-gallery-7.jpg') }}"
-													alt="img">
-												<figcaption>Drawn for an insurance company</figcaption>
-											</figure>
-										</li>
-									</ul>
-									<!-- End of .gallery -->
-
-									<p>Moms are like…buttons? Moms are like glue. Moms are like pizza crusts. Moms are
-										the ones who make sure things happen—from birth to school lunch.</p>
-									<p>They’re the ones we rely on for playdates and emotional support, homework help
-										and babysitting. Moms are the ultimate dependable support. Like, hopefully, the
-										button on your jeans.</p>
-									<p>My hero when I was a kid was my mom. Same for everyone I knew. Moms are
-										untouchable. They’re elegant, smart, beautiful, kind…everything we want to be.
-										At 29 years old, my favorite compliment is being told that I look like my mom.
-										Seeing myself in her image, like this daughter up top, makes me so proud of how
-										far I’ve come, and so thankful for where I come from.</p>
-									<h3>Want To See More Dribbble Shots?</h3>
-									<p>Moms are like…buttons? Moms are like glue. Moms are like pizza crusts. Moms are
-										the ones who make sure things happen—from birth to school lunch.</p>
-									<p>They’re the ones we rely on for playdates and emotional support, homework help
-										and babysitting. Moms are the ultimate dependable support. Like, hopefully, the
-										button on your jeans.</p>
-									<p>My hero when I was a kid was my mom. Same for everyone I knew. Moms are
-										untouchable. They’re elegant, smart, beautiful, kind…everything we want to be.
-										At 29 years old, my favorite compliment is being told that I look like my mom.
-										Seeing myself in her image, like this daughter up top, makes me so proud of how
-										far I’ve come, and so thankful for where I come from.</p>
-
-									<figure class="post-media">
-										<video class="plyr-post"
-											poster="{{ asset('styleWeb/images/video-post/post-format-video-1.html') }}"
-											id="video-player-1" playsinline controls>
-											<source src="{{ asset('videos/post-format-video-1.mp4') }}" type="video/mp4">
-										</video>
-										<figcaption>
-											Drawn for an insurance company
-										</figcaption>
-									</figure>
-
-
-									<p>Mother’s Day is this Sunday, folks!</p>
-									<p>These eight shots crystallize the hard work moms put into keeping their kids
-										alive,
-										happy,
-										and
-										healthy.
-										They might give you the inspiration you need for filling out that card—or stand
-										alone
-										for
-										your mom’s
-										interpretation.</p>
-
-									<ul class="masonry-grid gallery">
-										<li class="grid-item col-lg-4">
-											<figure>
-												<img src="{{ asset('styleWeb/images/single-masonry-gallery/gallery-1.png') }}" alt=""
-													class="img-fluid w-100">
-											</figure>
-										</li>
-										<li class="grid-item col-lg-4">
-											<figure>
-												<img src="{{ asset('styleWeb/images/single-masonry-gallery/gallery-2.png') }}" alt=""
-													class="img-fluid w-100">
-											</figure>
-										</li>
-										<li class="grid-item col-lg-4">
-											<figure>
-												<img src="{{ asset('styleWeb/images/single-masonry-gallery/gallery-3.png') }}" alt=""
-													class="img-fluid w-100">
-											</figure>
-										</li>
-										<li class="grid-item col-lg-4">
-											<figure>
-												<img src="{{ asset('styleWeb/images/single-masonry-gallery/gallery-4.png') }}" alt=""
-													class="img-fluid w-100">
-											</figure>
-										</li>
-									</ul>
-									<!-- End of .gallery -->
-
-									<p>For those of us who want to say thank you to our moms, it’s not always easy to
-										put
-										those
-										big
-										feelings
-										in
-										words. Which is where Dribbble comes in.</p>
-									<h3>Moms On The Move</h3>
-
-									<p>Drawn for an insurance company, this animation of a mom with a first-aid kit and
-										a
-										flashing
-										red light exemplifies the mother’s job.</p>
-									<p>Moms are the ones who bandage our boo-boos when we’re little and continue to take
-										care of
-										us
-										as we get older—often sacrificing their own needs so they can help with ours.
-										Cruising
-										on a
-										bike to help heal our injuries is the most mom thing one can do.</p>
-
-									<p>Moms are the ones who bandage our boo-boos when we’re little and continue to take
-										care of
-										us
-										as we get older—often sacrificing their own needs so they can help with ours.
-										Cruising
-										on a
-										bike to help heal our injuries is the most mom thing one can do.</p>
-
-									<blockquote>
-										<p>
-											If you’ve been waiting for an invitation, this calligraphy is it.
-											Commissioned
-											by
-											Facebook, this is a hand-lettered design for a poster. Quote is Facebook
-											Building 8
-											VP’s
-											Regina Dugan—and mine.
-										</p>
-									</blockquote>
-
-									<p>Moms are like…buttons? Moms are like glue. Moms are like pizza crusts. Moms are
-										the
-										ones
-										who
-										make sure things happen—from birth to school lunch.</p>
-
-									<figure class="post-media">
-										<div class="embed-responsive embed-responsive-16by9">
-											<iframe width="560" height="315"
-												src="http://www.youtube.com/embed/U3v5yMF1hTs?origin=http://axilthemes.com/"
-												allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-												allowfullscreen></iframe>
-										</div>
-										<figcaption>
-											Drawn for an insurance company
-										</figcaption>
-									</figure>
-
-
-									<p>They’re the ones we rely on for playdates and emotional support, homework help
-										and
-										babysitting. Moms are the ultimate dependable support. Like, hopefully, the
-										button
-										on
-										your
-										jeans.</p>
-
-									<h3>Unordered List Style?</h3>
-									<ul class="unordered-list-two">
-										<li>The refractor telescope uses a convex lens to focus the light on the
-											eyepiece.
-										</li>
-
-										<li>The reflector telescope has a concave lens which means it bends in. It uses
-											mirrors
-											to
-											focus the image that you eventually see.</li>
-
-										<li>Collimation is a term for how well tuned the telescope is to give you a good
-											clear
-											image of what you are looking at. You want your telescope to have good
-											collimation
-											so
-											you are not getting a false image of the celestial body.</li>
-
-										<li>Aperture is a fancy word for how big the lens of your telescope is. But it’s
-											an
-											important word because the aperture of the lens is the key to how powerful
-											your
-											telescope is. Magnification has nothing to do with it, its all in the
-											aperture.
-										</li>
-
-										<li>Focuser is the housing that keeps the eyepiece of the telescope, or what you
-											will
-											look
-											through, in place. The focuser has to be stable and in good repair for you
-											to
-											have
-											an
-											image you can rely on.</li>
-										<li>Mount and Wedge. Both of these terms refer to the tripod your telescope sits
-											on.
-											The
-											mount is the actual tripod and the wedge is the device that lets you attach
-											the
-											telescope to the mount.</li>
-									</ul>
-
-									<p>Moms are like…buttons? Moms are like glue. Moms are like pizza crusts. Moms are
-										the
-										ones
-										who
-										make sure things happen—from birth to school lunch.</p>
-
-									<p>They’re the ones we rely on for playdates and emotional support, homework help
-										and
-										babysitting. Moms are the ultimate dependable support. Like, hopefully, the
-										button
-										on
-										your
-										jeans.</p>
-
-									<figure class="post-media">
-										<div class="embed-responsive embed-responsive-16by9" id="player">
-											<iframe
-												src="https://player.vimeo.com/video/76979871?loop=false&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=0&amp;gesture=media"
-												allowfullscreen allow="autoplay"></iframe>
-										</div>
-										<figcaption>
-											Drawn for an insurance company
-										</figcaption>
-									</figure>
-
-
-									<p>My hero when I was a kid was my mom. Same for everyone I knew. Moms are
-										untouchable.
-										They’re
-										elegant, smart, beautiful, kind…everything we want to be. At 29 years old, my
-										favorite
-										compliment is being told that I look like my mom. Seeing myself in her image,
-										like
-										this
-										daughter up top, makes me so proud of how far I’ve come, and so thankful for
-										where I
-										come
-										from.</p>
-
-									<h3>Want To See More Dribbble Shots?</h3>
-
-									<p>Moms are like…buttons? Moms are like glue. Moms are like pizza crusts. Moms are
-										the
-										ones
-										who
-										make sure things happen—from birth to school lunch.</p>
-
-									<p>They’re the ones we rely on for playdates and emotional support, homework help
-										and
-										babysitting. Moms are the ultimate dependable support. Like, hopefully, the
-										button
-										on
-										your
-										jeans.</p>
-
-									<figure class="post-media">
-										<audio class="plyr-post">
-											<source src="{{ asset('audios/audio.mp3') }}" type="audio/mpeg">
-											Your browser does not support the audio element.
-										</audio>
-									</figure>
-
-									<h3>Want To See More Dribbble Shots?</h3>
-
-									<p>My hero when I was a kid was my mom. Same for everyone I knew. Moms are
-										untouchable.
-										They’re
-										elegant, smart, beautiful, kind…everything we want to be. At 29 years old, my
-										favorite
-										compliment is being told that I look like my mom. Seeing myself in her image,
-										like
-										this
-										daughter up top, makes me so proud of how far I’ve come, and so thankful for
-										where I
-										come
-										from.</p>
-
-									<blockquote class="blockquote blockquote__with-image m-t-xs-0 m-b-xs-30">
-										<figure>
-											<img src="{{ asset('styleWeb/images/post-single-gallery/post-single-gallery-1.jpg') }}"
-												alt="image">
-										</figure>
-										<p>
-											If you’ve been waiting for an invitation, this calligraphy is it.
-											Commissioned
-											by
-											Facebook, this is a hand-lettered design for a poster. Quote is Facebook
-											Building 8
-											VP’s
-											Regina Dugan—and mine.
-										</p>
-									</blockquote>
-									<!-- End of .blockquote -->
-								</div>
-								<!-- End of .single-blog-wrapper -->
+								{!! $data->content !!}
 							</article>
 							<!-- End of .post-details -->
 
@@ -440,23 +84,16 @@
 
 							<div class="about-author m-b-xs-60">
 								<div class="media">
-									<a href="#"><img class="author-img" src="{{ asset('styleWeb/images/author/author-1.png') }}"
-											alt=""></a>
+									<a href="#"><img class="author-img" src="/{{ $data-> avatar_author }}"
+											alt="" style="min-height: 10.5rem; object-fit:cover; border-radius:100%"></a>
 									<div class="media-body">
 										<div class="media-body-title">
-											<h3><a href="#">Jeffrey Franklin</a></h3>
+											<h3><a href="#">{{ $data-> author}}</a></h3>
 										</div>
 										<!-- End of .media-body-title -->
 
 										<div class="media-body-content">
-											<p>At 29 years old, my favorite compliment is being told that I look
-												like my
-												mom.
-												Seeing myself in her image, like this daughter up top, makes me so
-												proud
-												of
-												how
-												far I’ve come, and so thankful for where I come from.</p>
+											<p>{{ $data-> info_author}}</p>
 											<ul class="social-share social-share__with-bg">
 												<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
 												<li><a href="#"><i class="fab fa-twitter"></i></a></li>
@@ -802,20 +439,20 @@
 									<div class="tab-pane fade show active" id="recent-post">
 										<div class="axil-content">
 											<div class="media post-block post-block__small">
-												<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img
+												<a href="{{ route('web.post-detail', ['id' => $data->id])}}" class="align-self-center"><img
 														class=" m-r-xs-30" src="{{ asset('styleWeb/images/media/small-media-1.jpg') }}"
 														alt="media image"></a>
 												<div class="media-body">
 													<div class="post-cat-group">
-														<a href="{{ route('web.post-format-standard')}}"
+														<a href="{{ route('web.post-detail', ['id' => $data->id])}}"
 															class="post-cat color-blue-three">BEAUTY,</a>
-														<a href="{{ route('web.post-format-standard')}}"
+														<a href="{{ route('web.post-detail', ['id' => $data->id])}}"
 															class="post-cat color-yellow-one">TRADE,</a>
-														<a href="{{ route('web.post-format-standard')}}"
+														<a href="{{ route('web.post-detail', ['id' => $data->id])}}"
 															class="post-cat color-red-one">MUSIC</a>
 													</div>
 													<h4 class="axil-post-title hover-line hover-line"><a
-															href="{{ route('web.post-format-standard')}}">Stocking Your Restaurant
+															href="{{ route('web.post-detail', ['id' => $data->id])}}">Stocking Your Restaurant
 															Kitchen Finding Reliable
 															Sellers</a></h4>
 													<div class="post-metas">
@@ -827,14 +464,14 @@
 											</div>
 											<!-- End of .post-block -->
 											<div class="media post-block post-block__small">
-												<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img
+												<a href="{{ route('web.post-detail', ['id' => $data->id])}}" class="align-self-center"><img
 														class=" m-r-xs-30" src="{{ asset('styleWeb/images/media/small-media-2.jpg') }}"
 														alt="media image"></a>
 												<div class="media-body">
-													<a href="{{ route('web.post-format-standard')}}"
+													<a href="{{ route('web.post-detail', ['id' => $data->id])}}"
 														class="post-cat color-green-three">TRAVEL</a>
 													<h4 class="axil-post-title hover-line hover-line"><a
-															href="{{ route('web.post-format-standard')}}">Trip
+															href="{{ route('web.post-detail', ['id' => $data->id])}}">Trip
 															To Iqaluit In Nunavut A
 															Canadian Arctic
 															City</a>
@@ -848,14 +485,14 @@
 											</div>
 											<!-- End of .post-block -->
 											<div class="media post-block post-block__small">
-												<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img
+												<a href="{{ route('web.post-detail', ['id' => $data->id])}}" class="align-self-center"><img
 														class=" m-r-xs-30" src="{{ asset('styleWeb/images/media/small-media-3.jpg') }}"
 														alt="media image"></a>
 												<div class="media-body">
-													<a href="{{ route('web.post-format-standard')}}"
+													<a href="{{ route('web.post-detail', ['id' => $data->id])}}"
 														class="post-cat color-red-two">SPORTS</a>
 													<h4 class="axil-post-title hover-line hover-line"><a
-															href="{{ route('web.post-format-standard')}}">Thousands Now Adware
+															href="{{ route('web.post-detail', ['id' => $data->id])}}">Thousands Now Adware
 															Removal Who Never Thought They Could</a></h4>
 													<div class="post-metas">
 														<ul class="list-inline">
@@ -866,14 +503,14 @@
 											</div>
 											<!-- End of .post-block -->
 											<div class="media post-block post-block__small">
-												<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img
+												<a href="{{ route('web.post-detail', ['id' => $data->id])}}" class="align-self-center"><img
 														class=" m-r-xs-30" src="{{ asset('styleWeb/images/media/small-media-4.jpg') }}"
 														alt="media image"></a>
 												<div class="media-body">
-													<a href="{{ route('web.post-format-standard')}}"
+													<a href="{{ route('web.post-detail', ['id' => $data->id])}}"
 														class="post-cat color-blue-one">FASHION</a>
 													<h4 class="axil-post-title hover-line hover-line"><a
-															href="{{ route('web.post-format-standard')}}">To
+															href="{{ route('web.post-detail', ['id' => $data->id])}}">To
 															Keep Makeup Looking Fresh
 															Take A Powder</a></h4>
 													<div class="post-metas">
@@ -891,14 +528,14 @@
 									<div class="tab-pane fade" id="popular-post">
 										<div class="axil-content">
 											<div class="media post-block post-block__small">
-												<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img
+												<a href="{{ route('web.post-detail', ['id' => $data->id])}}" class="align-self-center"><img
 														class=" m-r-xs-30" src="{{ asset('styleWeb/images/media/small-media-3.jpg') }}"
 														alt="media image"></a>
 												<div class="media-body">
-													<a href="{{ route('web.post-format-standard')}}"
+													<a href="{{ route('web.post-detail', ['id' => $data->id])}}"
 														class="post-cat color-blue-one">FASHION</a>
 													<h4 class="axil-post-title hover-line hover-line"><a
-															href="{{ route('web.post-format-standard')}}">To
+															href="{{ route('web.post-detail', ['id' => $data->id])}}">To
 															Keep Makeup Looking Fresh
 															Take A Powder</a></h4>
 													<div class="post-metas">
@@ -910,14 +547,14 @@
 											</div>
 											<!-- End of .post-block -->
 											<div class="media post-block post-block__small">
-												<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img
+												<a href="{{ route('web.post-detail', ['id' => $data->id])}}" class="align-self-center"><img
 														class=" m-r-xs-30" src="{{ asset('styleWeb/images/media/small-media-2.jpg') }}"
 														alt="media image"></a>
 												<div class="media-body">
-													<a href="#{{ route('web.post-format-standard')}}"
+													<a href="#{{ route('web.post-detail', ['id' => $data->id])}}"
 														class="post-cat color-blue-three">BEAUTY</a>
 													<h4 class="axil-post-title hover-line hover-line"><a
-															href="{{ route('web.post-format-standard')}}">Stocking Your Restaurant
+															href="{{ route('web.post-detail', ['id' => $data->id])}}">Stocking Your Restaurant
 															Kitchen Finding Reliable
 															Sellers</a></h4>
 													<div class="post-metas">
@@ -929,14 +566,14 @@
 											</div>
 											<!-- End of .post-block -->
 											<div class="media post-block post-block__small">
-												<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img
+												<a href="{{ route('web.post-detail', ['id' => $data->id])}}" class="align-self-center"><img
 														class=" m-r-xs-30" src="{{ asset('styleWeb/images/media/small-media-1.jpg') }}"
 														alt="media image"></a>
 												<div class="media-body">
-													<a href="{{ route('web.post-format-standard')}}"
+													<a href="{{ route('web.post-detail', ['id' => $data->id])}}"
 														class="post-cat color-green-three">TRAVEL</a>
 													<h4 class="axil-post-title hover-line hover-line"><a
-															href="{{ route('web.post-format-standard')}}">Trip
+															href="{{ route('web.post-detail', ['id' => $data->id])}}">Trip
 															To Iqaluit In Nunavut A
 															Canadian Arctic
 															City</a>
@@ -950,14 +587,14 @@
 											</div>
 											<!-- End of .post-block -->
 											<div class="media post-block post-block__small">
-												<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img
+												<a href="{{ route('web.post-detail', ['id' => $data->id])}}" class="align-self-center"><img
 														class=" m-r-xs-30" src="{{ asset('styleWeb/images/media/small-media-4.jpg') }}"
 														alt="media image"></a>
 												<div class="media-body">
-													<a href="{{ route('web.post-format-standard')}}"
+													<a href="{{ route('web.post-detail', ['id' => $data->id])}}"
 														class="post-cat color-red-two">SPORTS</a>
 													<h4 class="axil-post-title hover-line hover-line"><a
-															href="{{ route('web.post-format-standard')}}">RCB
+															href="{{ route('web.post-detail', ['id' => $data->id])}}">RCB
 															vs RR, IPL 2019:
 															Bangalore, Rajasthan desperate
 															for
@@ -977,14 +614,14 @@
 									<div class="tab-pane fade" id="comments">
 										<div class="axil-content">
 											<div class="media post-block post-block__small">
-												<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img
+												<a href="{{ route('web.post-detail', ['id' => $data->id])}}" class="align-self-center"><img
 														class=" m-r-xs-30" src="{{ asset('styleWeb/images/media/small-media-2.jpg') }}"
 														alt="media image"></a>
 												<div class="media-body">
-													<a href="{{ route('web.post-format-standard')}}"
+													<a href="{{ route('web.post-detail', ['id' => $data->id])}}"
 														class="post-cat color-red-two">SPORTS</a>
 													<h4 class="axil-post-title hover-line hover-line"><a
-															href="{{ route('web.post-format-standard')}}">RCB
+															href="{{ route('web.post-detail', ['id' => $data->id])}}">RCB
 															vs RR, IPL 2019:
 															Bangalore, Rajasthan desperate
 															for
@@ -998,14 +635,14 @@
 											</div>
 											<!-- End of .post-block -->
 											<div class="media post-block post-block__small">
-												<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img
+												<a href="{{ route('web.post-detail', ['id' => $data->id])}}" class="align-self-center"><img
 														class=" m-r-xs-30" src="{{ asset('styleWeb/images/media/small-media-1.jpg') }}"
 														alt="media image"></a>
 												<div class="media-body">
-													<a href="{{ route('web.post-format-standard')}}"
+													<a href="{{ route('web.post-detail', ['id' => $data->id])}}"
 														class="post-cat color-blue-three">BEAUTY</a>
 													<h4 class="axil-post-title hover-line hover-line"><a
-															href="{{ route('web.post-format-standard')}}">Stocking Your Restaurant
+															href="{{ route('web.post-detail', ['id' => $data->id])}}">Stocking Your Restaurant
 															Kitchen Finding Reliable
 															Sellers</a></h4>
 													<div class="post-metas">
@@ -1017,21 +654,21 @@
 											</div>
 											<!-- End of .post-block -->
 											<div class="media post-block post-block__small">
-												<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img
+												<a href="{{ route('web.post-detail', ['id' => $data->id])}}" class="align-self-center"><img
 														class=" m-r-xs-30" src="{{ asset('styleWeb/images/media/small-media-3.jpg') }}"
 														alt="media image"></a>
 												<div class="media-body">
-													<a href="{{ route('web.post-format-standard')}}"
+													<a href="{{ route('web.post-detail', ['id' => $data->id])}}"
 														class="post-cat color-green-three">TRAVEL</a>
 													<h4 class="axil-post-title hover-line hover-line"><a
-															href="{{ route('web.post-format-standard')}}">Trip
+															href="{{ route('web.post-detail', ['id' => $data->id])}}">Trip
 															To Iqaluit In Nunavut A
 															Canadian Arctic
 															City</a>
 													</h4>
 													<div class="post-metas">
 														<ul class="list-inline">
-															<li>By <a href="{{ route('web.post-format-standard')}}">Xu Jianhong</a>
+															<li>By <a href="{{ route('web.post-detail', ['id' => $data->id])}}">Xu Jianhong</a>
 															</li>
 														</ul>
 													</div>
@@ -1039,14 +676,14 @@
 											</div>
 											<!-- End of .post-block -->
 											<div class="media post-block post-block__small">
-												<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img
+												<a href="{{ route('web.post-detail', ['id' => $data->id])}}" class="align-self-center"><img
 														class=" m-r-xs-30" src="{{ asset('styleWeb/images/media/small-media-4.jpg') }}"
 														alt="media image"></a>
 												<div class="media-body">
-													<a href="{{ route('web.post-format-standard')}}"
+													<a href="{{ route('web.post-detail', ['id' => $data->id])}}"
 														class="post-cat color-blue-one">FASHION</a>
 													<h4 class="axil-post-title hover-line hover-line"><a
-															href="{{ route('web.post-format-standard')}}">To
+															href="{{ route('web.post-detail', ['id' => $data->id])}}">To
 															Keep Makeup Looking Fresh
 															Take A Powder</a></h4>
 													<div class="post-metas">
@@ -1072,14 +709,7 @@
 								</div>
 								<div class="axil-content">
 									<ul class="tag-list-wrapper">
-										<li><a href="#">Gaming</a></li>
-										<li><a href="#">Adventure</a></li>
-										<li><a href="#">Travel</a></li>
-										<li><a href="#">Sports</a></li>
-										<li><a href="#">Science</a></li>
-										<li><a href="#">Technology</a></li>
-										<li><a href="#">Fashion</a></li>
-										<li><a href="#">Life Style</a></li>
+										<li><a href="#">{{ $data->tag }}</a></li>
 									</ul>
 									<!-- End of .tab-list-wrapper -->
 								</div>
@@ -1258,7 +888,7 @@
 					<div class="row">
 						<div class="col-lg-3 col-md-4">
 							<div class="content-block m-b-xs-30">
-								<a href="{{ route('web.post-format-standard')}}">
+								<a href="{{ route('web.post-detail', ['id' => $data->id])}}">
 									<img src="{{ asset('styleWeb/images/related-post/related-post-1.jpg') }}" alt="abstruct image"
 										class="img-fluid">
 									<div class="grad-overlay"></div>
@@ -1266,7 +896,7 @@
 								<div class="media-caption">
 									<div class="caption-content">
 										<h3 class="axil-post-title hover-line hover-line"><a
-												href="{{ route('web.post-format-standard')}}">Barbecue Party Tips For A Truly Amazing
+												href="{{ route('web.post-detail', ['id' => $data->id])}}">Barbecue Party Tips For A Truly Amazing
 												Event</a></h3>
 										<div class="caption-meta">
 											By <a href="{{ route('web.author') }}">Martin Lambert</a>
@@ -1280,7 +910,7 @@
 						<!-- End of .col-lg-3 -->
 						<div class="col-lg-3 col-md-4">
 							<div class="content-block m-b-xs-30">
-								<a href="{{ route('web.post-format-standard')}}">
+								<a href="{{ route('web.post-detail', ['id' => $data->id])}}">
 									<img src="{{ asset('styleWeb/images/related-post/related-post-2.jpg') }}" alt="abstruct image"
 										class="img-fluid">
 									<div class="grad-overlay"></div>
@@ -1288,7 +918,7 @@
 								<div class="media-caption">
 									<div class="caption-content">
 										<h3 class="axil-post-title hover-line hover-line"><a
-												href="{{ route('web.post-format-standard')}}">Grilling Tips For The Dog Days Of
+												href="{{ route('web.post-detail', ['id' => $data->id])}}">Grilling Tips For The Dog Days Of
 												Summer</a></h3>
 										<div class="caption-meta">
 											By <a href="{{ route('web.author') }}">Angu Tamba
@@ -1304,7 +934,7 @@
 						<!-- End of .col-lg-3 -->
 						<div class="col-lg-3 col-md-4">
 							<div class="content-block m-b-xs-30">
-								<a href="{{ route('web.post-format-standard')}}">
+								<a href="{{ route('web.post-detail', ['id' => $data->id])}}">
 									<img src="{{ asset('styleWeb/images/related-post/related-post-3.jpg') }}" alt="abstruct image"
 										class="img-fluid">
 									<div class="grad-overlay"></div>
@@ -1312,7 +942,7 @@
 								<div class="media-caption">
 									<div class="caption-content">
 										<h3 class="axil-post-title hover-line hover-line"><a
-												href="{{ route('web.post-format-standard')}}">Smarter Food Choices 101 Tips For Busy
+												href="{{ route('web.post-detail', ['id' => $data->id])}}">Smarter Food Choices 101 Tips For Busy
 												Women</a></h3>
 										<div class="caption-meta">
 											By <a href="{{ route('web.author') }}">Naseema Al Morad</a>
@@ -1326,7 +956,7 @@
 						<!-- End of .col-lg-3 -->
 						<div class="col-lg-3 col-md-4">
 							<div class="content-block m-b-xs-30">
-								<a href="{{ route('web.post-format-standard')}}">
+								<a href="{{ route('web.post-detail', ['id' => $data->id])}}">
 									<img src="{{ asset('styleWeb/images/related-post/related-post-4.jpg') }}" alt="abstruct image"
 										class="img-fluid">
 									<div class="grad-overlay"></div>
@@ -1334,7 +964,7 @@
 								<div class="media-caption">
 									<div class="caption-content">
 										<h3 class="axil-post-title hover-line hover-line"><a
-												href="{{ route('web.post-format-standard')}}">Deep Fryer Pieces Of Wisdom</a></h3>
+												href="{{ route('web.post-detail', ['id' => $data->id])}}">Deep Fryer Pieces Of Wisdom</a></h3>
 										<div class="caption-meta">
 											By <a href="{{ route('web.author') }}">Nayah Tantoh</a>
 										</div>
