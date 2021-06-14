@@ -615,4 +615,19 @@ $(document).ready(function(){
 
         });
     });
+    var showChar = 70;
+	var ellipsestext = "...";
+    var data = ['title-hot'];
+    data.forEach( function(value){
+
+        $('.'+value).each(function() {
+            var content = $(this).html();
+            if(content.length > showChar) {
+                var c = content.substr(0, showChar);
+                var html = c + '<span class="moreellipses">' + ellipsestext+ '&nbsp';
+                $(this).html(html);
+            }
+
+        });
+    });
 })

@@ -7,24 +7,23 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6">
-					<div class="axil-latest-post">
-						<div class="media post-block m-b-xs-20">
-							<figure class="fig-container">
-								<a href="{{ route('web.post-format-standard')}}"><img src="{{ asset('styleWeb/images/post/latest-post.jpg') }}"
+					<div class="axil-latest-post" style="height: 100%">
+						<div class="media post-block m-b-xs-20" style="height: 100%">
+							<figure class="fig-container" style="height: 100%">
+								<a href="{{ route('web.post-detail', ['id'=>1])}}" style="height: 100%"><img class="" style="height: 100%" src="{{ $data['postTop']->image }}"
 										alt="latest post"></a>
 								<div class="post-cat-group m-b-xs-10">
 									<a href="{{ route('web.business') }}"
-										class="post-cat cat-btn bg-color-blue-one">TECHNOLOGY</a>
+										class="post-cat cat-btn bg-color-blue-one">{{ $data['postTop']->cate_name }}</a>
 								</div>
 							</figure>
 							<div class="media-body">
-								<h3 class="axil-post-title hover-line hover-line"><a href="{{ route('web.post-format-standard')}}">VR Is the Use of Computer Technology to
-										Create a Simulated Environment.</a></h3>
+								<h3 class="axil-post-title hover-line hover-line"><a href="{{ route('web.post-detail',['id'=>$data['postTop']->id])}}">{{ $data['postTop']->title}}</a></h3>
 								<div class="post-metas">
 									<ul class="list-inline">
-										<li>By <a href="{{ route('web.author') }}" class="post-author">Ashley Graham</a></li>
-										<li><i class="dot">.</i>July 23, 2019</li>
-										<li><a href="#"><i class="feather icon-activity"></i>5k Views</a></li>
+										<li>By <a href="{{ route('web.author') }}" class="post-author">{{ $data['postTop']->author }}</a></li>
+										<li><i class="dot">.</i>{{ \Carbon\Carbon::create($data['postTop']->created_at)->toFormattedDateString() }}</li>
+										<li><a href="{{ route('web.post-detail',['id'=>$data['postTop']->id])}}"><i class="feather icon-activity"></i>{{ Counter::showAndCount('web.post-detail', $data['postTop']->id) }} Views</a></li>
 										<li><a href="#"><i class="feather icon-share-2"></i>230 Shares</a></li>
 									</ul>
 								</div>
@@ -43,83 +42,27 @@
 						</div>
 						<!-- End of .section-title -->
 						<div class="axil-content">
-							<div class="media post-block m-b-xs-30">
-								<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img
-										class=" m-r-xs-30" src="{{ asset('styleWeb/images/post/post-img-18.jpg') }}" alt=""></a>
-								<div class="media-body">
-									<div class="post-cat-group m-b-xs-10">
-										<a href="{{ route('web.business') }}"
-											class="post-cat cat-btn bg-color-purple-one">TRAVEL</a>
-									</div>
-									<h3 class="axil-post-title hover-line hover-line"><a
-											href="{{ route('web.post-format-standard')}}">50 Years After The Moon Landing: How
-											Close Is Space Travel, Really?</a></h3>
-									<div class="post-metas">
-										<ul class="list-inline">
-											<li>By <a href="{{ route('web.author') }}">Amachea Jajah</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<!-- End of .post-block -->
-							<div class="media post-block m-b-xs-30">
-								<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img
-										class=" m-r-xs-30" src="{{ asset('styleWeb/images/post/post-img-19.jpg') }}" alt=""></a>
-								<div class="media-body">
-									<div class="post-cat-group m-b-xs-10">
-										<a href="{{ route('web.business') }}"
-											class="post-cat cat-btn bg-color-green-one">LIFESTYLE</a>
-									</div>
-									<h3 class="axil-post-title hover-line hover-line"><a
-											href="{{ route('web.post-format-standard')}}">Trip To Iqaluit In Nunavut A Canadian
-											Arctic City</a>
-									</h3>
-									<div class="post-metas">
-										<ul class="list-inline">
-											<li>By <a href="{{ route('web.author') }}">Xu Jianhong</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<!-- End of .post-block -->
-							<div class="media post-block m-b-xs-30">
-								<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img
-										class=" m-r-xs-30" src="{{ asset('styleWeb/images/post/post-img-20.jpg') }}" alt=""></a>
-								<div class="media-body">
-									<div class="post-cat-group m-b-xs-10">
-										<a href="{{ route('web.business') }}"
-											class="post-cat cat-btn bg-color-blue-two">COOKING</a>
-									</div>
-									<h3 class="axil-post-title hover-line hover-line"><a
-											href="{{ route('web.post-format-standard')}}">Tesla’s Cooking Up A New Way To Wire
-											Its Cars, Report Says</a></h3>
-									<div class="post-metas">
-										<ul class="list-inline">
-											<li>By <a href="{{ route('web.author') }}">Ahmad Nazeri</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<!-- End of .post-block -->
-							<div class="media post-block m-b-xs-30">
-								<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img
-										class=" m-r-xs-30" src="{{ asset('styleWeb/images/post/post-img-21.jpg') }}" alt=""></a>
-								<div class="media-body">
-									<div class="post-cat-group m-b-xs-10">
-										<a href="{{ route('web.business') }}"
-											class="post-cat cat-btn bg-color-red-two">WILDLIFE</a>
-									</div>
-									<h3 class="axil-post-title hover-line hover-line"><a
-											href="{{ route('web.post-format-standard')}}">African Nations Are Struggling To Save
-											Their Wildlife</a></h3>
-									<div class="post-metas">
-										<ul class="list-inline">
-											<li>By <a href="{{ route('web.author') }}">Sergio Pliego</a></li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<!-- End of .post-block -->
+							@foreach ($data['postNumber'] as $post)
+                                <div class="media post-block m-b-xs-30">
+                                    <a href="{{ route('web.post-detail', ['id'=>$post->id])}}" class="align-self-center"><img
+                                            class=" m-r-xs-30" src="{{ $post->image }}" alt=""></a>
+                                    <div class="media-body">
+                                        <div class="post-cat-group m-b-xs-10">
+                                            <a href="{{ route('web.business') }}"
+                                                class="post-cat cat-btn bg-color-purple-one">{{ $post->cate_name}}</a>
+                                        </div>
+                                        <h3 class="axil-post-title hover-line hover-line"><a
+                                                href="{{ route('web.post-detail', ['id'=>$post->id])}}" class="title-hot">{{ $post->title}}</a></h3>
+                                        <div class="post-metas">
+                                            <ul class="list-inline">
+                                                <li>By <a href="{{ route('web.author') }}">{{ $post->author}}</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End of .post-block -->
+                            @endforeach
+
 						</div>
 						<!-- End of .content -->
 					</div>
@@ -141,7 +84,7 @@
 			<div class="row">
 				<div class="col-lg-8">
 					<div class="axil-img-container m-b-xs-30">
-						<a href="{{ route('web.post-format-standard')}}" class="d-block">
+						<a href="{{ route('web.post-detail', ['id'=>1])}}" class="d-block">
 							<img src="{{ asset('styleWeb/images/top-stories/top-stories-1.jpg') }}" alt="gallery images"
 								class="w-100">
 							<div class="grad-overlay"></div>
@@ -153,7 +96,7 @@
 								</div>
 								<div class="axil-media-bottom">
 									<h3 class="axil-post-title hover-line hover-line"><a
-											href="{{ route('web.post-format-standard')}}">World Travel Holdings Will Be Honored
+											href="{{ route('web.post-detail', ['id'=>1])}}">World Travel Holdings Will Be Honored
 											Alongside Other Recipients</a></h3>
 									<div class="post-metas">
 										<ul class="list-inline">
@@ -173,7 +116,7 @@
 				<!-- End of .grid-item -->
 				<div class="col-lg-4">
 					<div class="axil-img-container m-b-xs-30">
-						<a href="{{ route('web.post-format-standard')}}" class="d-block">
+						<a href="{{ route('web.post-detail', ['id'=>1])}}" class="d-block">
 							<img src="{{ asset('styleWeb/images/top-stories/top-stories-2.jpg') }}" alt="gallery images"
 								class="w-100">
 							<div class="grad-overlay"></div>
@@ -186,11 +129,11 @@
 								</div>
 								<div class="axil-media-bottom">
 									<h3 class="axil-post-title hover-line hover-line"><a
-											href="{{ route('web.post-format-standard')}}">Unmatched Toner Cartridge Quality 20
+											href="{{ route('web.post-detail', ['id'=>1])}}">Unmatched Toner Cartridge Quality 20
 											Less Than Oem Price</a></h3>
 									<div class="post-metas">
 										<ul class="list-inline">
-											<li><a href="{{ route('web.post-format-standard')}}"
+											<li><a href="{{ route('web.post-detail', ['id'=>1])}}"
 													class="d-flex align-items-center"><span>By Amachea
 														Jajah</span></a></li>
 										</ul>
@@ -202,7 +145,7 @@
 					</div>
 					<!-- End of .axil-img-container -->
 					<div class="axil-img-container m-b-xs-30">
-						<a href="{{ route('web.post-format-standard')}}" class="d-block">
+						<a href="{{ route('web.post-detail', ['id'=>1])}}" class="d-block">
 							<img src="{{ asset('styleWeb/images/top-stories/top-stories-3.jpg') }}" alt="gallery images"
 								class="w-100">
 							<div class="grad-overlay"></div>
@@ -216,7 +159,7 @@
 								</div>
 								<div class="axil-media-bottom">
 									<h3 class="axil-post-title hover-line hover-line"><a
-											href="{{ route('web.post-format-standard')}}">Stocking Your
+											href="{{ route('web.post-detail', ['id'=>1])}}">Stocking Your
 											Restaurant Kitchen Finding
 											Reliable
 											Sellers</a></h3>
@@ -249,14 +192,14 @@
 			<div class="row">
 				<div class="col-lg-6">
 					<div class="media post-block m-b-xs-30">
-						<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img class=" m-r-xs-30"
+						<a href="{{ route('web.post-detail', ['id'=>1])}}" class="align-self-center"><img class=" m-r-xs-30"
 								src="{{ asset('styleWeb/images/trending-stories/trending-stories-1.jpg') }}" alt=""></a>
 						<div class="media-body">
 							<div class="post-cat-group m-b-xs-10">
 								<a href="{{ route('web.business') }}" class="post-cat cat-btn bg-color-blue-grey-one">WORLD</a>
 							</div>
 							<h3 class="axil-post-title hover-line hover-line"><a
-									href="{{ route('web.post-format-standard')}}">Increasing Prosperity With Positive
+									href="{{ route('web.post-detail', ['id'=>1])}}">Increasing Prosperity With Positive
 									Thinking</a></h3>
 							<div class="post-metas">
 								<ul class="list-inline">
@@ -270,14 +213,14 @@
 				<!-- End of .col-lg-6 -->
 				<div class="col-lg-6">
 					<div class="media post-block m-b-xs-30">
-						<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img class=" m-r-xs-30"
+						<a href="{{ route('web.post-detail', ['id'=>1])}}" class="align-self-center"><img class=" m-r-xs-30"
 								src="{{ asset('styleWeb/images/trending-stories/trending-stories-2.jpg') }}" alt=""></a>
 						<div class="media-body">
 							<div class="post-cat-group m-b-xs-10">
 								<a href="{{ route('web.business') }}" class="post-cat cat-btn bg-color-red-two">FOOD</a>
 							</div>
 							<h3 class="axil-post-title hover-line hover-line"><a
-									href="{{ route('web.post-format-standard')}}">Crispy Air
+									href="{{ route('web.post-detail', ['id'=>1])}}">Crispy Air
 									Fryer
 									Parmesan And Thyme Roasted
 									Wedge Fries</a>
@@ -294,14 +237,14 @@
 				<!-- End of .col-lg-6 -->
 				<div class="col-lg-6">
 					<div class="media post-block m-b-xs-30">
-						<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img class=" m-r-xs-30"
+						<a href="{{ route('web.post-detail', ['id'=>1])}}" class="align-self-center"><img class=" m-r-xs-30"
 								src="{{ asset('styleWeb/images/trending-stories/trending-stories-3.jpg') }}" alt=""></a>
 						<div class="media-body">
 							<div class="post-cat-group m-b-xs-10">
 								<a href="{{ route('web.business') }}" class="post-cat cat-btn bg-color-purple-one">LIFESTYLE</a>
 							</div>
 							<h3 class="axil-post-title hover-line hover-line"><a
-									href="{{ route('web.post-format-standard')}}">Boxed Water
+									href="{{ route('web.post-detail', ['id'=>1])}}">Boxed Water
 									Partners
 									With Rag & Bone To Tap
 									Consumer Creativity</a></h3>
@@ -317,14 +260,14 @@
 				<!-- End of .col-lg-6 -->
 				<div class="col-lg-6">
 					<div class="media post-block m-b-xs-30">
-						<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img class=" m-r-xs-30"
+						<a href="{{ route('web.post-detail', ['id'=>1])}}" class="align-self-center"><img class=" m-r-xs-30"
 								src="{{ asset('styleWeb/images/trending-stories/trending-stories-4.jpg') }}" alt=""></a>
 						<div class="media-body">
 							<div class="post-cat-group m-b-xs-10">
 								<a href="{{ route('web.business') }}" class="post-cat cat-btn bg-color-blue-three">RACING</a>
 							</div>
 							<h3 class="axil-post-title hover-line hover-line"><a
-									href="{{ route('web.post-format-standard')}}">Kipchoge
+									href="{{ route('web.post-detail', ['id'=>1])}}">Kipchoge
 									Proves He Has
 									No Equal: Runs 2nd
 									Fastest Marathon Time In History</a></h3>
@@ -340,14 +283,14 @@
 				<!-- End of .col-lg-6 -->
 				<div class="col-lg-6">
 					<div class="media post-block m-b-xs-30">
-						<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img class=" m-r-xs-30"
+						<a href="{{ route('web.post-detail', ['id'=>1])}}" class="align-self-center"><img class=" m-r-xs-30"
 								src="{{ asset('styleWeb/images/trending-stories/trending-stories-5.jpg') }}" alt=""></a>
 						<div class="media-body">
 							<div class="post-cat-group m-b-xs-10">
 								<a href="{{ route('web.business') }}" class="post-cat cat-btn bg-color-green-two">SWIMMING</a>
 							</div>
 							<h3 class="axil-post-title hover-line hover-line"><a
-									href="{{ route('web.post-format-standard')}}">Here, I Focus
+									href="{{ route('web.post-detail', ['id'=>1])}}">Here, I Focus
 									On A Range
 									Of Items And Features
 								</a></h3>
@@ -363,14 +306,14 @@
 				<!-- End of .col-lg-6 -->
 				<div class="col-lg-6">
 					<div class="media post-block m-b-xs-30">
-						<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img class=" m-r-xs-30"
+						<a href="{{ route('web.post-detail', ['id'=>1])}}" class="align-self-center"><img class=" m-r-xs-30"
 								src="{{ asset('styleWeb/images/trending-stories/trending-stories-6.jpg') }}" alt=""></a>
 						<div class="media-body">
 							<div class="post-cat-group m-b-xs-10">
 								<a href="{{ route('web.business') }}" class="post-cat cat-btn bg-color-blue-two">SPORTS</a>
 							</div>
 							<h3 class="axil-post-title hover-line hover-line"><a
-									href="{{ route('web.post-format-standard')}}">Get Around Easily With A New York Limousine
+									href="{{ route('web.post-detail', ['id'=>1])}}">Get Around Easily With A New York Limousine
 									Service</a>
 							</h3>
 							<div class="post-metas">
@@ -409,7 +352,7 @@
 							<div class="media-body media-body__big">
 								<div class="axil-media-bottom mt-auto">
 									<h3 class="axil-post-title hover-line hover-line"><a
-											href="{{ route('web.post-format-standard')}}">Maui
+											href="{{ route('web.post-detail', ['id'=>1])}}">Maui
 											By Air The
 											Best Way Around The
 											Island</a></h3>
@@ -532,14 +475,14 @@
 					</div>
 					<main class="axil-content">
 						<div class="media post-block post-block__mid m-b-xs-30">
-							<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img class=" m-r-xs-30"
+							<a href="{{ route('web.post-detail', ['id'=>1])}}" class="align-self-center"><img class=" m-r-xs-30"
 									src="{{ asset('styleWeb/images/post/post-img-3.jpg') }}" alt=""></a>
 							<div class="media-body">
 								<div class="post-cat-group m-b-xs-10">
 									<a href="{{ route('web.business') }}" class="post-cat cat-btn bg-color-blue-one">TRAVEL</a>
 								</div>
 								<h3 class="axil-post-title hover-line hover-line"><a
-										href="{{ route('web.post-format-standard')}}">Will The
+										href="{{ route('web.post-detail', ['id'=>1])}}">Will The
 										Democrats
 										Be Able To Reverse The
 										Online Gambling Ban</a></h3>
@@ -554,14 +497,14 @@
 						</div>
 						<!-- End of .post-block -->
 						<div class="media post-block post-block__mid m-b-xs-30">
-							<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img class=" m-r-xs-30"
+							<a href="{{ route('web.post-detail', ['id'=>1])}}" class="align-self-center"><img class=" m-r-xs-30"
 									src="{{ asset('styleWeb/images/post/post-img-4.jpg') }}" alt=""></a>
 							<div class="media-body">
 								<div class="post-cat-group m-b-xs-10">
 									<a href="{{ route('web.business') }}" class="post-cat cat-btn bg-color-blue-two">SCIENCE</a>
 								</div>
 								<h3 class="axil-post-title hover-line hover-line"><a
-										href="{{ route('web.post-format-standard')}}">Old
+										href="{{ route('web.post-detail', ['id'=>1])}}">Old
 										Fashioned Recipe
 										For Preventing
 										Allergies And Chemical Sensitivities</a></h3>
@@ -576,7 +519,7 @@
 						</div>
 						<!-- End of .post-block -->
 						<div class="media post-block post-block__mid m-b-xs-30">
-							<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img class=" m-r-xs-30"
+							<a href="{{ route('web.post-detail', ['id'=>1])}}" class="align-self-center"><img class=" m-r-xs-30"
 									src="{{ asset('styleWeb/images/post/post-img-5.jpg') }}" alt=""></a>
 							<div class="media-body">
 								<div class="post-cat-group m-b-xs-10">
@@ -584,7 +527,7 @@
 										class="post-cat cat-btn bg-color-purple-one">PHILOSOPHY</a>
 								</div>
 								<h3 class="axil-post-title hover-line hover-line"><a
-										href="{{ route('web.post-format-standard')}}">Barbeque
+										href="{{ route('web.post-detail', ['id'=>1])}}">Barbeque
 										Techniques
 										Two Methods To
 										Consider</a></h3>
@@ -599,14 +542,14 @@
 						</div>
 						<!-- End of .post-block -->
 						<div class="media post-block post-block__mid m-b-xs-30">
-							<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img class=" m-r-xs-30"
+							<a href="{{ route('web.post-detail', ['id'=>1])}}" class="align-self-center"><img class=" m-r-xs-30"
 									src="{{ asset('styleWeb/images/post/post-img-6.jpg') }}" alt=""></a>
 							<div class="media-body">
 								<div class="post-cat-group m-b-xs-10">
 									<a href="{{ route('web.business') }}" class="post-cat cat-btn bg-color-purple-two">BEAUTY</a>
 								</div>
 								<h3 class="axil-post-title hover-line hover-line"><a
-										href="{{ route('web.post-format-standard')}}">Sony
+										href="{{ route('web.post-detail', ['id'=>1])}}">Sony
 										Laptops Are
 										Still Part Of The Sony
 										Family</a></h3>
@@ -621,7 +564,7 @@
 						</div>
 						<!-- End of .post-block -->
 						<div class="media post-block post-block__mid m-b-xs-30">
-							<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img class=" m-r-xs-30"
+							<a href="{{ route('web.post-detail', ['id'=>1])}}" class="align-self-center"><img class=" m-r-xs-30"
 									src="{{ asset('styleWeb/images/post/post-img-7.jpg') }}" alt=""></a>
 							<div class="media-body">
 								<div class="post-cat-group m-b-xs-10">
@@ -629,7 +572,7 @@
 										class="post-cat cat-btn bg-color-blue-three">ADVERTISING</a>
 								</div>
 								<h3 class="axil-post-title hover-line hover-line"><a
-										href="{{ route('web.post-format-standard')}}">It takes a big idea to attract the
+										href="{{ route('web.post-detail', ['id'=>1])}}">It takes a big idea to attract the
 										attention of consumers and get them to buy your product. </a></h3>
 								<p class="mid">Nullam arcu purus, elementum ut tincidunt sit amet, facilisis quis
 									quam. Pellentesque fringilla leo et commodo pulvinar.</p>
@@ -642,7 +585,7 @@
 						</div>
 						<!-- End of .post-block -->
 						<div class="media post-block post-block__mid m-b-xs-30">
-							<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img class=" m-r-xs-30"
+							<a href="{{ route('web.post-detail', ['id'=>1])}}" class="align-self-center"><img class=" m-r-xs-30"
 									src="{{ asset('styleWeb/images/post/post-img-8.jpg') }}" alt=""></a>
 							<div class="media-body">
 								<div class="post-cat-group m-b-xs-10">
@@ -650,7 +593,7 @@
 										class="post-cat cat-btn bg-color-green-two">TECHNOLOGY</a>
 								</div>
 								<h3 class="axil-post-title hover-line hover-line"><a
-										href="{{ route('web.post-format-standard')}}">Going
+										href="{{ route('web.post-detail', ['id'=>1])}}">Going
 										Wireless With
 										Your Headphones</a></h3>
 								<p class="mid">Donec ac felis purus. Nam quis justo vel tortor imperdiet efficitur.
@@ -664,7 +607,7 @@
 						</div>
 						<!-- End of .post-block -->
 						<div class="media post-block post-block__mid m-b-xs-30">
-							<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img class=" m-r-xs-30"
+							<a href="{{ route('web.post-detail', ['id'=>1])}}" class="align-self-center"><img class=" m-r-xs-30"
 									src="{{ asset('styleWeb/images/post/post-img-9.jpg') }}" alt=""></a>
 							<div class="media-body">
 								<div class="post-cat-group m-b-xs-10">
@@ -672,7 +615,7 @@
 										class="post-cat cat-btn bg-color-green-three">MOTIVATION</a>
 								</div>
 								<h3 class="axil-post-title hover-line hover-line"><a
-										href="{{ route('web.post-format-standard')}}">Hypnotherapy For Motivation Getting The
+										href="{{ route('web.post-detail', ['id'=>1])}}">Hypnotherapy For Motivation Getting The
 										Drive Back</a>
 								</h3>
 								<p class="mid">Pellentesque ullamcorper nibh nec lacus lobortis lobortis. Praesent
@@ -687,14 +630,14 @@
 						<!-- End of .post-block -->
 
 						<div class="media post-block post-block__mid m-b-xs-30">
-							<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img class=" m-r-xs-30"
+							<a href="{{ route('web.post-detail', ['id'=>1])}}" class="align-self-center"><img class=" m-r-xs-30"
 									src="{{ asset('styleWeb/images/post/post-img-10.jpg') }}" alt=""></a>
 							<div class="media-body">
 								<div class="post-cat-group m-b-xs-10">
 									<a href="{{ route('web.business') }}" class="post-cat cat-btn bg-color-red-one">SPORTS</a>
 								</div>
 								<h3 class="axil-post-title hover-line hover-line"><a
-										href="{{ route('web.post-format-standard')}}">Maui By Air The Best Way Around The
+										href="{{ route('web.post-detail', ['id'=>1])}}">Maui By Air The Best Way Around The
 										Island</a>
 								</h3>
 								<p class="mid">Ut et feugiat dui. Nam fringilla, sem et mollis tincidunt, eros orci
@@ -766,7 +709,7 @@
 									<div class="cat-carousel-inner">
 										<ul class="category-list-wrapper">
 											<li class="category-list perfect-square">
-												<a href="{{ route('web.post-format-standard')}}" class="list-inner"
+												<a href="{{ route('web.post-detail', ['id'=>1])}}" class="list-inner"
 													style="background-image: url({{ asset('styleWeb/images/category-bg/category-bg-1.png') }} )">
 													<div class="post-info-wrapper overlay">
 														<div class="counter-inner"><span class="counter">20</span>+
@@ -778,7 +721,7 @@
 											</li>
 											<!-- End of .category-list -->
 											<li class="category-list perfect-square">
-												<a href="{{ route('web.post-format-standard')}}" class="list-inner"
+												<a href="{{ route('web.post-detail', ['id'=>1])}}" class="list-inner"
 													style="background-image: url({{ asset('styleWeb/images/category-bg/category-bg-2.png') }} )">
 													<div class="post-info-wrapper overlay">
 														<div class="counter-inner"><span class="counter">100</span>+
@@ -790,7 +733,7 @@
 											</li>
 											<!-- End of .category-list -->
 											<li class="category-list perfect-square">
-												<a href="{{ route('web.post-format-standard')}}" class="list-inner"
+												<a href="{{ route('web.post-detail', ['id'=>1])}}" class="list-inner"
 													style="background-image: url({{ asset('styleWeb/images/category-bg/category-bg-3.png') }} )">
 													<div class="post-info-wrapper overlay">
 														<div class="counter-inner"><span class="counter">10</span>+
@@ -802,7 +745,7 @@
 											</li>
 											<!-- End of .category-list -->
 											<li class="category-list perfect-square">
-												<a href="{{ route('web.post-format-standard')}}" class="list-inner"
+												<a href="{{ route('web.post-detail', ['id'=>1])}}" class="list-inner"
 													style="background-image: url({{ asset('styleWeb/images/category-bg/category-bg-4.png') }} )">
 													<div class="post-info-wrapper overlay">
 														<div class="counter-inner"><span class="counter">10</span>+
@@ -820,7 +763,7 @@
 									<div class="cat-carousel-inner">
 										<ul class="category-list-wrapper">
 											<li class="category-list perfect-square">
-												<a href="{{ route('web.post-format-standard')}}" class="list-inner"
+												<a href="{{ route('web.post-detail', ['id'=>1])}}" class="list-inner"
 													style="background-image: url({{ asset('styleWeb/images/category-bg/category-bg-5.jpg') }})">
 													<div class="post-info-wrapper overlay">
 														<div class="counter-inner"><span class="counter">20</span>+
@@ -832,7 +775,7 @@
 											</li>
 											<!-- End of .category-list -->
 											<li class="category-list perfect-square">
-												<a href="{{ route('web.post-format-standard')}}" class="list-inner"
+												<a href="{{ route('web.post-detail', ['id'=>1])}}" class="list-inner"
 													style="background-image: url({{ asset('styleWeb/images/category-bg/category-bg-6.jpg') }})">
 													<div class="post-info-wrapper overlay">
 														<div class="counter-inner"><span class="counter">100</span>+
@@ -844,7 +787,7 @@
 											</li>
 											<!-- End of .category-list -->
 											<li class="category-list perfect-square">
-												<a href="{{ route('web.post-format-standard')}}" class="list-inner"
+												<a href="{{ route('web.post-detail', ['id'=>1])}}" class="list-inner"
 													style="background-image: url({{ asset('styleWeb/images/category-bg/category-bg-7.jpg') }})">
 													<div class="post-info-wrapper overlay">
 														<div class="counter-inner"><span class="counter">10</span>+
@@ -856,7 +799,7 @@
 											</li>
 											<!-- End of .category-list -->
 											<li class="category-list perfect-square">
-												<a href="{{ route('web.post-format-standard')}}" class="list-inner"
+												<a href="{{ route('web.post-detail', ['id'=>1])}}" class="list-inner"
 													style="background-image: url({{ asset('styleWeb/images/category-bg/category-bg-8.jpg') }})">
 													<div class="post-info-wrapper overlay">
 														<div class="counter-inner"><span class="counter">10</span>+
@@ -963,20 +906,20 @@
 								<div class="tab-pane fade show active" id="recent-post">
 									<div class="axil-content">
 										<div class="media post-block post-block__small">
-											<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img
+											<a href="{{ route('web.post-detail', ['id'=>1])}}" class="align-self-center"><img
 													class=" m-r-xs-30" src="{{ asset('styleWeb/images/media/small-media-1.jpg') }}"
 													alt="media image"></a>
 											<div class="media-body">
 												<div class="post-cat-group">
-													<a href="{{ route('web.post-format-standard')}}"
+													<a href="{{ route('web.post-detail', ['id'=>1])}}"
 														class="post-cat color-blue-three">BEAUTY,</a>
-													<a href="{{ route('web.post-format-standard')}}"
+													<a href="{{ route('web.post-detail', ['id'=>1])}}"
 														class="post-cat color-yellow-one">TRADE,</a>
-													<a href="{{ route('web.post-format-standard')}}"
+													<a href="{{ route('web.post-detail', ['id'=>1])}}"
 														class="post-cat color-red-one">MUSIC</a>
 												</div>
 												<h4 class="axil-post-title hover-line hover-line"><a
-														href="{{ route('web.post-format-standard')}}">Stocking Your Restaurant
+														href="{{ route('web.post-detail', ['id'=>1])}}">Stocking Your Restaurant
 														Kitchen Finding Reliable
 														Sellers</a></h4>
 												<div class="post-metas">
@@ -988,14 +931,14 @@
 										</div>
 										<!-- End of .post-block -->
 										<div class="media post-block post-block__small">
-											<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img
+											<a href="{{ route('web.post-detail', ['id'=>1])}}" class="align-self-center"><img
 													class=" m-r-xs-30" src="{{ asset('styleWeb/images/media/small-media-2.jpg') }}"
 													alt="media image"></a>
 											<div class="media-body">
-												<a href="{{ route('web.post-format-standard')}}"
+												<a href="{{ route('web.post-detail', ['id'=>1])}}"
 													class="post-cat color-green-three">TRAVEL</a>
 												<h4 class="axil-post-title hover-line hover-line"><a
-														href="{{ route('web.post-format-standard')}}">Trip
+														href="{{ route('web.post-detail', ['id'=>1])}}">Trip
 														To Iqaluit In Nunavut A
 														Canadian Arctic
 														City</a>
@@ -1009,14 +952,14 @@
 										</div>
 										<!-- End of .post-block -->
 										<div class="media post-block post-block__small">
-											<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img
+											<a href="{{ route('web.post-detail', ['id'=>1])}}" class="align-self-center"><img
 													class=" m-r-xs-30" src="{{ asset('styleWeb/images/media/small-media-3.jpg') }}"
 													alt="media image"></a>
 											<div class="media-body">
-												<a href="{{ route('web.post-format-standard')}}"
+												<a href="{{ route('web.post-detail', ['id'=>1])}}"
 													class="post-cat color-red-two">SPORTS</a>
 												<h4 class="axil-post-title hover-line hover-line"><a
-														href="{{ route('web.post-format-standard')}}">Thousands Now Adware
+														href="{{ route('web.post-detail', ['id'=>1])}}">Thousands Now Adware
 														Removal Who Never Thought They Could</a></h4>
 												<div class="post-metas">
 													<ul class="list-inline">
@@ -1027,14 +970,14 @@
 										</div>
 										<!-- End of .post-block -->
 										<div class="media post-block post-block__small">
-											<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img
+											<a href="{{ route('web.post-detail', ['id'=>1])}}" class="align-self-center"><img
 													class=" m-r-xs-30" src="{{ asset('styleWeb/images/media/small-media-4.jpg') }}"
 													alt="media image"></a>
 											<div class="media-body">
-												<a href="{{ route('web.post-format-standard')}}"
+												<a href="{{ route('web.post-detail', ['id'=>1])}}"
 													class="post-cat color-blue-one">FASHION</a>
 												<h4 class="axil-post-title hover-line hover-line"><a
-														href="{{ route('web.post-format-standard')}}">To
+														href="{{ route('web.post-detail', ['id'=>1])}}">To
 														Keep Makeup Looking Fresh
 														Take A Powder</a></h4>
 												<div class="post-metas">
@@ -1052,14 +995,14 @@
 								<div class="tab-pane fade" id="popular-post">
 									<div class="axil-content">
 										<div class="media post-block post-block__small">
-											<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img
+											<a href="{{ route('web.post-detail', ['id'=>1])}}" class="align-self-center"><img
 													class=" m-r-xs-30" src="{{ asset('styleWeb/images/media/small-media-3.jpg') }}"
 													alt="media image"></a>
 											<div class="media-body">
-												<a href="{{ route('web.post-format-standard')}}"
+												<a href="{{ route('web.post-detail', ['id'=>1])}}"
 													class="post-cat color-blue-one">FASHION</a>
 												<h4 class="axil-post-title hover-line hover-line"><a
-														href="{{ route('web.post-format-standard')}}">To
+														href="{{ route('web.post-detail', ['id'=>1])}}">To
 														Keep Makeup Looking Fresh
 														Take A Powder</a></h4>
 												<div class="post-metas">
@@ -1071,14 +1014,14 @@
 										</div>
 										<!-- End of .post-block -->
 										<div class="media post-block post-block__small">
-											<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img
+											<a href="{{ route('web.post-detail', ['id'=>1])}}" class="align-self-center"><img
 													class=" m-r-xs-30" src="{{ asset('styleWeb/images/media/small-media-2.jpg') }}"
 													alt="media image"></a>
 											<div class="media-body">
-												<a href="#{{ route('web.post-format-standard')}}"
+												<a href="#{{ route('web.post-detail', ['id'=>1])}}"
 													class="post-cat color-blue-three">BEAUTY</a>
 												<h4 class="axil-post-title hover-line hover-line"><a
-														href="{{ route('web.post-format-standard')}}">Stocking Your Restaurant
+														href="{{ route('web.post-detail', ['id'=>1])}}">Stocking Your Restaurant
 														Kitchen Finding Reliable
 														Sellers</a></h4>
 												<div class="post-metas">
@@ -1090,14 +1033,14 @@
 										</div>
 										<!-- End of .post-block -->
 										<div class="media post-block post-block__small">
-											<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img
+											<a href="{{ route('web.post-detail', ['id'=>1])}}" class="align-self-center"><img
 													class=" m-r-xs-30" src="{{ asset('styleWeb/images/media/small-media-1.jpg') }}"
 													alt="media image"></a>
 											<div class="media-body">
-												<a href="{{ route('web.post-format-standard')}}"
+												<a href="{{ route('web.post-detail', ['id'=>1])}}"
 													class="post-cat color-green-three">TRAVEL</a>
 												<h4 class="axil-post-title hover-line hover-line"><a
-														href="{{ route('web.post-format-standard')}}">Trip
+														href="{{ route('web.post-detail', ['id'=>1])}}">Trip
 														To Iqaluit In Nunavut A
 														Canadian Arctic
 														City</a>
@@ -1111,14 +1054,14 @@
 										</div>
 										<!-- End of .post-block -->
 										<div class="media post-block post-block__small">
-											<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img
+											<a href="{{ route('web.post-detail', ['id'=>1])}}" class="align-self-center"><img
 													class=" m-r-xs-30" src="{{ asset('styleWeb/images/media/small-media-4.jpg') }}"
 													alt="media image"></a>
 											<div class="media-body">
-												<a href="{{ route('web.post-format-standard')}}"
+												<a href="{{ route('web.post-detail', ['id'=>1])}}"
 													class="post-cat color-red-two">SPORTS</a>
 												<h4 class="axil-post-title hover-line hover-line"><a
-														href="{{ route('web.post-format-standard')}}">RCB
+														href="{{ route('web.post-detail', ['id'=>1])}}">RCB
 														vs RR, IPL 2019:
 														Bangalore, Rajasthan desperate
 														for
@@ -1138,14 +1081,14 @@
 								<div class="tab-pane fade" id="comments">
 									<div class="axil-content">
 										<div class="media post-block post-block__small">
-											<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img
+											<a href="{{ route('web.post-detail', ['id'=>1])}}" class="align-self-center"><img
 													class=" m-r-xs-30" src="{{ asset('styleWeb/images/media/small-media-2.jpg') }}"
 													alt="media image"></a>
 											<div class="media-body">
-												<a href="{{ route('web.post-format-standard')}}"
+												<a href="{{ route('web.post-detail', ['id'=>1])}}"
 													class="post-cat color-red-two">SPORTS</a>
 												<h4 class="axil-post-title hover-line hover-line"><a
-														href="{{ route('web.post-format-standard')}}">RCB
+														href="{{ route('web.post-detail', ['id'=>1])}}">RCB
 														vs RR, IPL 2019:
 														Bangalore, Rajasthan desperate
 														for
@@ -1159,14 +1102,14 @@
 										</div>
 										<!-- End of .post-block -->
 										<div class="media post-block post-block__small">
-											<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img
+											<a href="{{ route('web.post-detail', ['id'=>1])}}" class="align-self-center"><img
 													class=" m-r-xs-30" src="{{ asset('styleWeb/images/media/small-media-1.jpg') }}"
 													alt="media image"></a>
 											<div class="media-body">
-												<a href="{{ route('web.post-format-standard')}}"
+												<a href="{{ route('web.post-detail', ['id'=>1])}}"
 													class="post-cat color-blue-three">BEAUTY</a>
 												<h4 class="axil-post-title hover-line hover-line"><a
-														href="{{ route('web.post-format-standard')}}">Stocking Your Restaurant
+														href="{{ route('web.post-detail', ['id'=>1])}}">Stocking Your Restaurant
 														Kitchen Finding Reliable
 														Sellers</a></h4>
 												<div class="post-metas">
@@ -1178,21 +1121,21 @@
 										</div>
 										<!-- End of .post-block -->
 										<div class="media post-block post-block__small">
-											<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img
+											<a href="{{ route('web.post-detail', ['id'=>1])}}" class="align-self-center"><img
 													class=" m-r-xs-30" src="{{ asset('styleWeb/images/media/small-media-3.jpg') }}"
 													alt="media image"></a>
 											<div class="media-body">
-												<a href="{{ route('web.post-format-standard')}}"
+												<a href="{{ route('web.post-detail', ['id'=>1])}}"
 													class="post-cat color-green-three">TRAVEL</a>
 												<h4 class="axil-post-title hover-line hover-line"><a
-														href="{{ route('web.post-format-standard')}}">Trip
+														href="{{ route('web.post-detail', ['id'=>1])}}">Trip
 														To Iqaluit In Nunavut A
 														Canadian Arctic
 														City</a>
 												</h4>
 												<div class="post-metas">
 													<ul class="list-inline">
-														<li>By <a href="{{ route('web.post-format-standard')}}">Xu Jianhong</a>
+														<li>By <a href="{{ route('web.post-detail', ['id'=>1])}}">Xu Jianhong</a>
 														</li>
 													</ul>
 												</div>
@@ -1200,14 +1143,14 @@
 										</div>
 										<!-- End of .post-block -->
 										<div class="media post-block post-block__small">
-											<a href="{{ route('web.post-format-standard')}}" class="align-self-center"><img
+											<a href="{{ route('web.post-detail', ['id'=>1])}}" class="align-self-center"><img
 													class=" m-r-xs-30" src="{{ asset('styleWeb/images/media/small-media-4.jpg') }}"
 													alt="media image"></a>
 											<div class="media-body">
-												<a href="{{ route('web.post-format-standard')}}"
+												<a href="{{ route('web.post-detail', ['id'=>1])}}"
 													class="post-cat color-blue-one">FASHION</a>
 												<h4 class="axil-post-title hover-line hover-line"><a
-														href="{{ route('web.post-format-standard')}}">To
+														href="{{ route('web.post-detail', ['id'=>1])}}">To
 														Keep Makeup Looking Fresh
 														Take A Powder</a></h4>
 												<div class="post-metas">
@@ -1376,7 +1319,7 @@
 				<div class="row">
 					<div class="col-lg-3 col-md-4">
 						<div class="content-block m-b-xs-30">
-							<a href="{{ route('web.post-format-standard')}}">
+							<a href="{{ route('web.post-detail', ['id'=>1])}}">
 								<img src="{{ asset('styleWeb/images/related-post/related-post-1.jpg') }}" alt="abstruct image"
 									class="img-fluid">
 								<div class="grad-overlay"></div>
@@ -1384,7 +1327,7 @@
 							<div class="media-caption">
 								<div class="caption-content">
 									<h3 class="axil-post-title hover-line hover-line"><a
-											href="{{ route('web.post-format-standard')}}">Barbecue Party Tips For A Truly Amazing
+											href="{{ route('web.post-detail', ['id'=>1])}}">Barbecue Party Tips For A Truly Amazing
 											Event</a></h3>
 									<div class="caption-meta">
 										By <a href="{{ route('web.author') }}">Martin Lambert</a>
@@ -1398,7 +1341,7 @@
 					<!-- End of .col-lg-3 -->
 					<div class="col-lg-3 col-md-4">
 						<div class="content-block m-b-xs-30">
-							<a href="{{ route('web.post-format-standard')}}">
+							<a href="{{ route('web.post-detail', ['id'=>1])}}">
 								<img src="{{ asset('styleWeb/images/related-post/related-post-2.jpg') }}" alt="abstruct image"
 									class="img-fluid">
 								<div class="grad-overlay"></div>
@@ -1406,7 +1349,7 @@
 							<div class="media-caption">
 								<div class="caption-content">
 									<h3 class="axil-post-title hover-line hover-line"><a
-											href="{{ route('web.post-format-standard')}}">Grilling Tips For The Dog Days Of
+											href="{{ route('web.post-detail', ['id'=>1])}}">Grilling Tips For The Dog Days Of
 											Summer</a></h3>
 									<div class="caption-meta">
 										By <a href="{{ route('web.author') }}">Angu Tamba
@@ -1422,7 +1365,7 @@
 					<!-- End of .col-lg-3 -->
 					<div class="col-lg-3 col-md-4">
 						<div class="content-block m-b-xs-30">
-							<a href="{{ route('web.post-format-standard')}}">
+							<a href="{{ route('web.post-detail', ['id'=>1])}}">
 								<img src="{{ asset('styleWeb/images/related-post/related-post-3.jpg') }}" alt="abstruct image"
 									class="img-fluid">
 								<div class="grad-overlay"></div>
@@ -1430,7 +1373,7 @@
 							<div class="media-caption">
 								<div class="caption-content">
 									<h3 class="axil-post-title hover-line hover-line"><a
-											href="{{ route('web.post-format-standard')}}">Smarter Food Choices 101 Tips For Busy
+											href="{{ route('web.post-detail', ['id'=>1])}}">Smarter Food Choices 101 Tips For Busy
 											Women</a></h3>
 									<div class="caption-meta">
 										By <a href="{{ route('web.author') }}">Naseema Al Morad</a>
@@ -1444,7 +1387,7 @@
 					<!-- End of .col-lg-3 -->
 					<div class="col-lg-3 col-md-4">
 						<div class="content-block m-b-xs-30">
-							<a href="{{ route('web.post-format-standard')}}">
+							<a href="{{ route('web.post-detail', ['id'=>1])}}">
 								<img src="{{ asset('styleWeb/images/related-post/related-post-4.jpg') }}" alt="abstruct image"
 									class="img-fluid">
 								<div class="grad-overlay"></div>
@@ -1452,7 +1395,7 @@
 							<div class="media-caption">
 								<div class="caption-content">
 									<h3 class="axil-post-title hover-line hover-line"><a
-											href="{{ route('web.post-format-standard')}}">Deep Fryer Pieces Of Wisdom</a></h3>
+											href="{{ route('web.post-detail', ['id'=>1])}}">Deep Fryer Pieces Of Wisdom</a></h3>
 									<div class="caption-meta">
 										By <a href="{{ route('web.author') }}">Nayah Tantoh</a>
 									</div>

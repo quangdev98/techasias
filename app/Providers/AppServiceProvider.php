@@ -23,11 +23,12 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
+
     const GUARD_ADMIN = 'admin';
+
     public function boot()
     {
         if (Auth::guard(self::GUARD_ADMIN)->check()) {
-            // dd(print_r(Auth::guard(self::GUARD_ADMIN)->check()));
             view()->share('adminName', Auth::guard(self::GUARD_ADMIN)->user() );
         }
     }

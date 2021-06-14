@@ -23,7 +23,7 @@ class CategoryController extends Controller
             return view('AdminStore.pages.categorys.cate_list', compact('category'));
         } catch (\Exception $e) {
             abort('500');
-        }
+        }   
     }
 
     public function store(CategoryRequest $request)

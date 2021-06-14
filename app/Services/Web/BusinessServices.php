@@ -12,9 +12,9 @@ use App\Repositories\Web\Business\BusinessRepositoryInterface;
          $this->businessRepository = $businessRepository;
      }
 
-    public function getBusiness()
+    public function getBusiness($slug)
     {
-        return $this->businessRepository->getBusiness();
+        return $this->businessRepository->getBusiness($slug);
     }
  }
 ?>

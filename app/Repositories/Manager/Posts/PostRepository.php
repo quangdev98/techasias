@@ -22,8 +22,7 @@
             return $query->where('category.name','=', $_data['category']);
         });
     }
-    // dd($_data);
-    return $db->select('post.id','post.image','post.slug','post.title','post.contentHot','post.status','category.name as categoryName', 'users.name as author','users.slug as slug_name')
+    return $db->orderBy((self::TABLE).'.created_at', 'DESC')->select('post.id','post.image','post.slug','post.title','post.contentHot','post.status','category.name as categoryName', 'users.name as author','users.slug as slug_name')
     ->orderBy('post.id','asc')->get();
     }
 

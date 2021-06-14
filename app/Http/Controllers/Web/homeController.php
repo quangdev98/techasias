@@ -3,20 +3,27 @@
 namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
+use App\Services\Web\IndexServices;
 use App\Services\Web\BusinessServices;
+use App\Services\Web\PostServices;
 
 class homeController extends Controller
 {
-    private $webServices;
+    private $businessServices;
+    private $postServices;
 
-    public function __construct(BusinessServices $businessServices)
+    public function __construct(IndexServices $indexServices, BusinessServices $businessServices, PostServices $postServices)
     {
+        $this->indexServices = $indexServices;
         $this->businessServices = $businessServices;
+        $this->postServices = $postServices;
     }
 
 	public function index()
 	{
-		return view('WebStore.pages.index');
+        $data['postTop'] = $this->indexServices->getPostTop();
+        $data['postNumber'] = $this->indexServices->getPostNumber();
+		return view('WebStore.pages.index', compact('data'));
 	}
 
     public function getContact(){
@@ -39,13 +46,14 @@ class homeController extends Controller
     	return view('WebStore.pages.author');
     }
 
-    public function getBusiness(){
+    public function getBusiness($slug){
         try {
             // $id = request()->id();
             // dd($id);
-            $data = $this->businessServices->getBusiness();
+            $data = $this->businessServices->getBusiness($slug);
             return view('WebStore.pages.business', compact(['data']));
         } catch (\Exception $e) {
+            // dd($e);
             abort('500');
         }
     }
@@ -64,8 +72,14 @@ class homeController extends Controller
     	return view('WebStore.pages.team');
     }
 
-    public function getPostFormatStandard(){
-    	return view('WebStore.pages.post-format-standard');
+    public function detailPost($id){
+        try {
+            $data = $this->postServices->detail($id);
+            return view('WebStore.pages.detail_post', compact(['data']));
+        } catch (\Exception $e) {
+           abort('500');
+        }
+
     }
      public function getPostFormatVideo(){
     	return view('WebStore.pages.post-format-video');

@@ -31,7 +31,7 @@ class AdminController extends Controller
         return Auth::guard('admin');
     }
 
-    function login(Request $request) 
+    function login(Request $request)
     {
       $dataLogin = $request->only(['email', 'password']);
         foreach (self::ALL_GUARD as $guard) {
@@ -46,7 +46,8 @@ class AdminController extends Controller
     {
         return view('auth.login');
     }
-    public function logout(){
+    public function logout()
+    {
         Auth::guard('admin')->logout();
         return redirect()->route('web.login')->with('success','Đã đăng xuất!');
     }

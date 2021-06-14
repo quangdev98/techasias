@@ -12,12 +12,11 @@
 		<div class="side-nav-content">
 			<div class="row ">
 				<div class="col-lg-6">
-					<ul class="main-navigation side-navigation list-inline flex-column">
-						<li class="{{ \Route::current()->getName() == 'web.business' ? 'is-active' : '' }}"><a href="{{ route('web.business') }}">Kinh Doanh</a></li>
-						<li class="{{ \Route::current()->getName() == 'life-style' ? 'is-active' : '' }}"><a href="{{ route('web.life-style') }}">Phong Cách Sống</a></li>
-						<li class="{{ \Route::current()->getName() == 'technology' ? 'is-active' : '' }}"><a href="{{ route('web.technology') }}">Công Nghệ</a></li>
-						<li class="{{ \Route::current()->getName() == 'sports' ? 'is-active' : '' }}"><a href="{{ route('web.sports') }}">Thể Thao</a></li>
-					</ul>
+                    <div class="side-navigation">
+                        <ul class="main-navigation side-navigation list-inline flex-column">
+                            @include('WebStore.partial.menu')
+                        </ul>
+                    </div>
 					<!-- End of .main-navigation -->
 				</div>
 				<!-- End of  .col-md-6 -->
@@ -107,17 +106,7 @@
 				<!-- End of .brand-logo-container -->
 				<div class="main-nav-wrapper">
 					<ul class="main-navigation list-inline" id="main-menu">
-						<li class="{{ \Route::current()->getName() == 'business' ? 'is-active' : '' }}">
-							<a href="{{ route('web.business') }}">Kinh Doanh</a>
-						</li>
-						<li class="{{ \Route::current()->getName() == 'life-style' ? 'is-active' : '' }}">
-							<a href="{{ route('web.life-style')}}">Phong Cách Sống</a>
-						</li>
-						<li class="{{ \Route::current()->getName() == 'technology' ? 'is-active' : '' }}">
-							<a href="{{ route('web.technology') }}">Công Nghệ</a></li>
-						<li class="{{ \Route::current()->getName() == 'sports' ? 'is-active' : '' }}">
-							<a href="{{ route('web.sports') }}">Thể Thao</a>
-						</li>
+                        @include('WebStore.partial.menu')
 						<li class="has-dropdown">
 							<a href="#">Khác</a>
 							<ul class="submenu">
