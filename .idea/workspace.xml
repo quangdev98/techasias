@@ -2,22 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="316de9c3-2670-428e-9f48-ddb69284881b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Repositories/Web/Posts/PostRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Repositories/Web/Posts/PostRepositoryInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Services/Web/PostServices.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/WebStore/partial/menu.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Web/homeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Web/homeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/RepositoryServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RepositoryServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/Web/Business/BusinessRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/Web/Business/BusinessRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/Web/Business/BusinessRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/Web/Business/BusinessRepositoryInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/Web/BusinessServices.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/Web/BusinessServices.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/AdminStore/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/AdminStore/layouts/master.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/WebStore/pages/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/WebStore/pages/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/WebStore/pages/post-format-standard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/WebStore/pages/detail_post.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/WebStore/partial/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/WebStore/partial/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/WebStore/partial/randomPost.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/WebStore/partial/randomPost.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/techasias.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/techasias.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,6 +135,8 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
       <path value="$PROJECT_DIR$/vendor/phpoption/phpoption" />
       <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
+      <path value="$PROJECT_DIR$/vendor/kryptonit3/counter" />
+      <path value="$PROJECT_DIR$/vendor/jaybizzle/crawler-detect" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
@@ -302,6 +290,7 @@
       <workItem from="1622541137752" duration="26000" />
       <workItem from="1622541197009" duration="20000" />
       <workItem from="1622541222420" duration="92000" />
+      <workItem from="1623662135848" duration="339000" />
     </task>
     <servers />
   </component>
