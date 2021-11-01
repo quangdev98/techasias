@@ -5,7 +5,7 @@
         <div class=" set-layout">
             <div class="row text-area row-name">
                 <label class="col-md-5" for="">Ảnh</label>
-                <div class="col-md-7"><img src="{{ $data['detail']->image}}" alt="$data['detail']->slug}}" class="img-small"></div>
+                <div class="col-md-7"><img src="{{ $data['detail']->image}}" alt="{{$data['detail']->slug}}" class="img-small"></div>
                 <div class="edit-Page">
                     <a href="{{ route('ad.edit-post',['id'=> $data['detail']->id]) }}" title="" class="">Chỉnh sửa</a>
                 </div>

@@ -82,6 +82,6 @@
 @stop
 @section('scripts')
     <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
-    {!! JsValidator::formRequest('App\Http\Requests\PostRequest', '#addPost'); !!}
+    {!! JsValidator::formRequest('App\Http\Requests\Posts\PostRequest', '#addPost'); !!}
    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
 @stop

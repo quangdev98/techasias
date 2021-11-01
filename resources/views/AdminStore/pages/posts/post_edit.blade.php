@@ -39,7 +39,7 @@
                         </div>
                         <div class="form-group">
                             <label>Thẻ</label>
-                            <input class="form-control" required="" name="tag" value="{{ $data['update']->tag }}" data-role="tagsinput" />
+                            <input class="form-control" name="tag" value="{{ $data['update']->tag }}" data-role="tagsinput" />
                         </div>
                         <div class="form-group">
                             <label>Tác giả</label>
@@ -71,6 +71,11 @@
                             </div>
                         </div>
                     </div>
+                    @if($errors->has('updateFalse'))
+                        <div class="alert alert-danger" role="alert">
+                            {{$errors->first('updateFalse')}}
+                        </div>
+                    @endif
                     <div class="col-lg-12">
                         <button type="submit" name="submit" class="btn btn-success">Thêm mới</button>
                     </div>
@@ -81,6 +86,6 @@
 @stop
 @section('scripts')
     <script type="text/javascript" src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
-    {!! JsValidator::formRequest('App\Http\Requests\PostRequest', '#editPost'); !!}
+    {!! JsValidator::formRequest('App\Http\Requests\Posts\UpdatePostRequest', '#editPost'); !!}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
 @stop

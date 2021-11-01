@@ -1,11 +1,11 @@
-<?php  
- namespace App\Http\Requests;
+<?php
+ namespace App\Http\Requests\Posts;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Factory;
 
 /**
-  * 
+  *
   */
  class PostRequest extends FormRequest
  {
@@ -31,7 +31,8 @@ use Illuminate\Validation\Factory;
             'contentHot' => 'required|min:10|unique:post,contentHot,'.request()->route('id'),
             'content' =>'required||unique:post,content,'.request()->route('id'),
             'image' =>'mimes:jpeg,jpg,png,gif|max:10000',
-            
+            'tag' => 'nullable',
+
         ];
     }
 
@@ -44,7 +45,7 @@ use Illuminate\Validation\Factory;
             'image.required'=>'Bạn chưa nhập image',
         ];
     }
- } 
+ }
 
 
 

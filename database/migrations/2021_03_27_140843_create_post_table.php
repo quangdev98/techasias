@@ -21,7 +21,7 @@ class CreatePostTable extends Migration
             $table->string('slug', 300)->nullable();
             $table->string('image', 500);
             $table->dateTime('postDate')->default(DB::raw('CURRENT_TIMESTAMP'))->comment('thời gian tạo bài viết');
-            $table->string('tag', 500)->nullable()->index();
+            $table->string('tag', 500)->nullable();
             $table->longtext('content')->nullable()->comment('nội dung bài viết dạng html');
             $table->unsignedBigInteger('user_id')->nullable()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

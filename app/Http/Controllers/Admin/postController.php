@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\PostRequest;
 use App\Services\Manager\PostServices;
+use Illuminate\Support\MessageBag;
 use Illuminate\Http\Request;
+use App\Http\Requests\Posts\PostRequest;
+use App\Http\Requests\Posts\UpdatePostRequest;
 use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
@@ -19,8 +21,8 @@ class PostController extends Controller
     public function index(Request $request){
         try {
             $data = $request->all();
-            $post = $this->postServices->index($data);
-            return view('AdminStore.pages.posts.post_list', compact(['post', 'data']));
+            $data['post'] = $this->postServices->index($data, $perPage = 10);
+            return view('AdminStore.pages.posts.post_list', compact(['data']));
         } catch (\Exception $e) {
             abort('500');
         }
@@ -54,11 +56,12 @@ class PostController extends Controller
         }
     }
 
-    public function update(PostRequest $request, $id)
+    public function update($id, UpdatePostRequest $request)
     {
         try {
             $data = $request->all();
-            $postUpdate = $this->postServices->update($data, $id);
+            $postUpdate = $this->postServices->update($id, $data);
+            if(!$postUpdate) return redirect()->back()->withErrors(['updateFalse' => __('Update thất bại')]);
             return redirect()->route('ad.post')->with('success','Sửa bài viết thành công');
         } catch (\Exception $e) {
             abort('500');
@@ -80,7 +83,6 @@ class PostController extends Controller
             $data['detail'] = $this->postServices->detail($id);
             return view('AdminStore.pages.posts.post_details', compact(['data']));
         } catch (\Exception $e) {
-            // dd($e);
             abort('500');
         }
     }

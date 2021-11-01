@@ -9,7 +9,7 @@
  {
     const TABLE = 'post';
 
-    public function getList($_data)
+    public function getList($_data, $_per_page)
     {
     $db = DB::table(self::TABLE)
     ->leftjoin('category', 'post.cate_id', '=','category.id')
@@ -23,7 +23,7 @@
         });
     }
     return $db->orderBy((self::TABLE).'.created_at', 'DESC')->select('post.id','post.image','post.slug','post.title','post.contentHot','post.status','category.name as categoryName', 'users.name as author','users.slug as slug_name')
-    ->orderBy('post.id','asc')->get();
+    ->orderBy('post.id','asc')->paginate($_per_page);
     }
 
     public function store($_data)
@@ -46,11 +46,11 @@
         return DB::table(self::TABLE)->where('id','=',$_id)->first();
     }
 
-    public function update($_id, $_data)
+    public function update($_id, $_dataUpdate)
     {
         DB::beginTransaction();
         try {
-            if(DB::table(self::TABLE)->where('id','=', $_id)->update($_data)){
+            if(DB::table(self::TABLE)->where('id','=', $_id)->update($_dataUpdate)){
                 DB::commit();
                 return true;
             }

@@ -2,6 +2,9 @@
 @section('title','Bài viết')
 @section('content')
     <div class="container-fluid">
+        @php
+          $post = $data['post'];
+        @endphp
 
         <!-- notifili -->
 
@@ -66,6 +69,7 @@
             </div>
         </div>
     </div>
+    {{ $data['post']->links('pagination') }}
     <div class="modal modal-danger fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="Delete"
          aria-hidden="true">
         <div class="modal-dialog" role="document">

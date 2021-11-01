@@ -19,11 +19,11 @@ class Helpers
 	{
 		if (!is_null($imageName))
 		{
-			$imageService = 'IMAGE-'.$url.time().'-'.$imageName->getClientOriginalName();
+			$imageService = 'IMAGE-'.$url.time().'-'.preg_replace('/\s+/', '',$imageName->getClientOriginalName());
             $imageName->move(public_path('uploads/'.$url),$imageService);
-            return $urlImage = 'uploads/'.$url.'/'.$imageService;
+            return 'uploads/'.$url.'/'.$imageService;
 		}
-        return $imageDefault = 'images/user_default.png';
+        return 'images/user_default.png';
 	}
 
 	public static function handleUploadedImage($imageName, $table, $url, $id)
@@ -32,12 +32,12 @@ class Helpers
  		$imageOld = $img->image;
  		if (!is_null($imageName))
 		{
-			$imageService = 'IMAGE-'.$url.time().'-'.$imageName->getClientOriginalName();
+			$imageService = 'IMAGE-'.$url.time().'-'.preg_replace('/\s+/', '',$imageName->getClientOriginalName());
             $imageName->move(public_path('uploads/'.$url),$imageService);
  			if(file_exists('uploads/'.$url.'/'.$imageOld)){
                 unlink($imageOld);
             }
-            return $urlImage = 'uploads/'.$url.'/'.$imageService;
+            return 'uploads/'.$url.'/'.$imageService;
 		} else{
  			return $imageService = $imageOld;
  		}

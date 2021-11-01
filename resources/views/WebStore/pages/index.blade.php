@@ -7,30 +7,32 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6">
-					<div class="axil-latest-post" style="height: 100%">
-						<div class="media post-block m-b-xs-20" style="height: 100%">
-							<figure class="fig-container" style="height: 100%">
-								<a href="{{ route('web.post-detail', ['id'=>1])}}" style="height: 100%"><img class="" style="height: 100%" src="{{ $data['postTop']->image }}"
-										alt="latest post"></a>
-								<div class="post-cat-group m-b-xs-10">
-									<a href="{{ route('web.business') }}"
-										class="post-cat cat-btn bg-color-blue-one">{{ $data['postTop']->cate_name }}</a>
-								</div>
-							</figure>
-							<div class="media-body">
-								<h3 class="axil-post-title hover-line hover-line"><a href="{{ route('web.post-detail',['id'=>$data['postTop']->id])}}">{{ $data['postTop']->title}}</a></h3>
-								<div class="post-metas">
-									<ul class="list-inline">
-										<li>By <a href="{{ route('web.author') }}" class="post-author">{{ $data['postTop']->author }}</a></li>
-										<li><i class="dot">.</i>{{ \Carbon\Carbon::create($data['postTop']->created_at)->toFormattedDateString() }}</li>
-										<li><a href="{{ route('web.post-detail',['id'=>$data['postTop']->id])}}"><i class="feather icon-activity"></i>{{ Counter::showAndCount('web.post-detail', $data['postTop']->id) }} Views</a></li>
-										<li><a href="#"><i class="feather icon-share-2"></i>230 Shares</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<!-- End of .post-block -->
-					</div>
+                    @if ($data['postTop'])
+                        <div class="axil-latest-post" style="height: 100%">
+                            <div class="media post-block m-b-xs-20" style="height: 100%">
+                                <figure class="fig-container" style="height: 100%">
+                                    <a href="{{ route('web.post-detail', ['id'=>1])}}" style="height: 100%"><img class="" style="height: 100%" src="{{ $data['postTop']->image }}"
+                                            alt="latest post"></a>
+                                    <div class="post-cat-group m-b-xs-10">
+                                        <a href="{{ route('web.business') }}"
+                                            class="post-cat cat-btn bg-color-blue-one">{{ $data['postTop']->cate_name }}</a>
+                                    </div>
+                                </figure>
+                                <div class="media-body">
+                                    <h3 class="axil-post-title hover-line hover-line"><a href="{{ route('web.post-detail',['id'=>$data['postTop']->id])}}">{{ $data['postTop']->title}}</a></h3>
+                                    <div class="post-metas">
+                                        <ul class="list-inline">
+                                            <li>By <a href="{{ route('web.author') }}" class="post-author">{{ $data['postTop']->author }}</a></li>
+                                            <li><i class="dot">.</i>{{ \Carbon\Carbon::create($data['postTop']->created_at)->toFormattedDateString() }}</li>
+                                            <li><a href="{{ route('web.post-detail',['id'=>$data['postTop']->id])}}"><i class="feather icon-activity"></i>{{ Counter::showAndCount('web.post-detail', $data['postTop']->id) }} Views</a></li>
+                                            <li><a href="#"><i class="feather icon-share-2"></i>230 Shares</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End of .post-block -->
+                        </div>
+                    @endif
 					<!-- End of .latest-post -->
 				</div>
 				<!-- End of .col-lg-6 -->

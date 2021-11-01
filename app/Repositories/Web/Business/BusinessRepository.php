@@ -12,9 +12,6 @@
 
     public function getBusiness($_slug)
     {
-        $route = Route::current()->getName();
-        // if()
-        // dd($route);
         return DB::table(self::TABLE)
         ->leftjoin('category', 'post.cate_id', '=','category.id')
         ->leftjoin('users', 'post.user_id','=','users.id')

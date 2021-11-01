@@ -14,8 +14,8 @@ class PostServices
          $this->postRepository = $postRepository;
      }
 
-	public function index($data){
-		return $this->postRepository->getList($data);
+	public function index($data, $perPage){
+		return $this->postRepository->getList($data, $perPage);
 	}
 	public function create()
 	{
@@ -43,9 +43,9 @@ class PostServices
 	{
 		return $this->postRepository->show($id);
 	}
-	public function update($data, $id)
+	public function update($id, $data)
 	{
-		$image = Helpers::handleUploadedImage(request()->file('imagePost'), 'post', 'posts', $id);
+		$image = Helpers::handleUploadedImage(request()->file('image'), 'post', 'posts', $id);
         $dataUpdate = [
 			'title'=> $data['title'],
 			'contentHot'=> $data['contentHot'],
@@ -56,8 +56,8 @@ class PostServices
 			'status'=> $data['status'],
 			'slug'=> Helpers::slug($data['title']),
 			'image'=> $image,
-
 		];
+        // dd($dataUpdate->isDirty());
 		return $this->postRepository->update($id, $dataUpdate);
 	}
 
