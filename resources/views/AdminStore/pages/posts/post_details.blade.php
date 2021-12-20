@@ -35,8 +35,8 @@
                 </div>
             </div>
             <div class="row">
-                <label class="col-md-5" for="">Nội dung</label>
-                <div class=" col-md-7">
+                <label class="col-md-5" for="">Nội dung</label><br>
+                <div class=" col-md-12">
                     <p class="name-details">{!! $data['detail']->content !!}</p>
                 </div>
             </div>
