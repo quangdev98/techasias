@@ -6,6 +6,7 @@
 	<div class="recent-news-wrapper section-gap p-t-xs-15 p-t-sm-60">
 		<div class="container">
 			<div class="row">
+				@if ($data['postTop'])
 				<div class="col-lg-6">
 					<div class="axil-latest-post" style="height: 100%">
 						<div class="media post-block m-b-xs-20" style="height: 100%">
@@ -33,6 +34,7 @@
 					</div>
 					<!-- End of .latest-post -->
 				</div>
+				@endif
 				<!-- End of .col-lg-6 -->
 				<div class="col-lg-6">
 					<div class="axil-recent-news">

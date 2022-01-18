@@ -48,12 +48,9 @@ class homeController extends Controller
 
     public function getBusiness($slug){
         try {
-            // $id = request()->id();
-            // dd($id);
             $data = $this->businessServices->getBusiness($slug);
             return view('WebStore.pages.business', compact(['data']));
         } catch (\Exception $e) {
-            // dd($e);
             abort('500');
         }
     }
